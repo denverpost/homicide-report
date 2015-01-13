@@ -4,8 +4,9 @@ import os
 import sys
 import json
 import gspread
-#from filewrapper import FileWrapper
+# from filewrapper import FileWrapper
 from optparse import OptionParser
+
 
 class Sheet:
     """ Handle google spreadsheet read and flatfile write operations.
@@ -14,7 +15,7 @@ class Sheet:
         """
 
     def __init__(self):
-        #self.fw = FileWrapper()
+        # self.fw = FileWrapper()
         self.verbose = True
         self.directory = os.path.dirname(os.path.realpath(__file__))
         self.spread = gspread.login(os.environ.get('ACCOUNT_USER'), os.environ.get('ACCOUNT_KEY'))
@@ -29,7 +30,7 @@ class Sheet:
         sheet = self.spread.open('homicides').worksheet('homicides')
         rows = sheet.get_all_values()
         keys = rows[0]
-        fn = { 
+        fn = {
             json: open('%s/output/%s.json' % (self.directory, worksheet), 'w'),
             csv: open('%s/output/%s.csv' % (self.directory, worksheet), 'w')
         }
@@ -37,7 +38,7 @@ class Sheet:
             if i == 0:
                 keys = row
                 continue
-            
+
 
 def main():
     pass
