@@ -11,7 +11,7 @@ from optparse import OptionParser
 class Sheet:
     """ Handle google spreadsheet read and flatfile write operations.
         >>> sheet = Sheet()
-        >>> sheet.read()
+        >>> sheet.publish()
         """
 
     def __init__(self):
@@ -41,7 +41,8 @@ class Sheet:
 
 
 def main():
-    pass
+    sheet = Sheet()
+    sheet.publish()
 
 if __name__ == '__main__':
     main()
