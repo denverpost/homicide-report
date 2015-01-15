@@ -3,6 +3,7 @@
 import os
 import sys
 import json
+import doctest
 import gspread
 # from filewrapper import FileWrapper
 from optparse import OptionParser
@@ -27,7 +28,7 @@ class Sheet:
     def slugify(self, slug):
         return slug.lower().replace(' ', '-')
 
-    def open_worksheet(self, worksheet, options=None):
+    def open_worksheet(self, worksheet):
         """ Open a spreadsheet, return a sheet object.
             >>> sheet = Sheet('test-sheet')
             >>> sheet.open_worksheet('worksheet-name')
@@ -37,6 +38,7 @@ class Sheet:
 
     def publish(self, worksheet=None):
         """ Publish the homicide data in whatever permutations we need.
+            This assumes the spreadsheet's key names are in the first row.
             >>> sheet = Sheet('test-sheet', 'worksheet-name')
             >>> sheet.publish()
             True
@@ -68,4 +70,10 @@ def main():
     sheet.publish('Homicide Report', 'responses')
 
 if __name__ == '__main__':
+    parser = OptionParser()
+    parser.add_option("-v", "--verbose", dest="verbose", default=False, action="store_true")
+    (options, args) = parser.parse_args()
+
+    doctest.testmod(verbose=options.verbose)
+
     main()
