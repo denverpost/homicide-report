@@ -46,7 +46,7 @@ class Sheet:
         if self.filters:
             self.filters.append({'key': key, 'value': value})
         else:
-            self.filters = [{'value': 'test', 'key': 'name'}]
+            self.filters = [{'key': key, 'value': value}]
         return True
 
     def open_worksheet(self, worksheet):
@@ -83,13 +83,16 @@ class Sheet:
                 continue
             record = OrderedDict(zip(keys, row))
 
+            publish = True
             if self.filters:
                 for item in self.filters:
                     if record[item['key']] != item['value']:
-                        continue
-            # print record
-            # *** Write to CSV & JSON files here. 
-            # *** Also consider what filtering we may need to do based on fields in the dict.
+                        publish = False
+
+            if publish:
+                pass
+                # *** Write to CSV & JSON files here. 
+                # *** Also consider what filtering we may need to do based on fields in the dict.
 
         return True
 
@@ -110,6 +113,7 @@ if __name__ == '__main__':
     parser.add_option("-v", "--verbose", dest="verbose", default=False, action="store_true")
     (options, args) = parser.parse_args()
 
-    doctest.testmod(verbose=options.verbose)
+    if options.verbose == True:
+        doctest.testmod(verbose=options.verbose)
 
     main(args)
