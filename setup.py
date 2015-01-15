@@ -13,7 +13,7 @@ class PyTest(Command):
         pass
 
     def run(self):
-        errno = subprocess.call(['py.test'])
+        errno = subprocess.call(['python -m py.test'])
         raise SystemExit(errno)
 
 setup(
