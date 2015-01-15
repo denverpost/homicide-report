@@ -21,6 +21,9 @@ class Sheet:
         # self.fw = FileWrapper()
         self.verbose = True
         self.directory = os.path.dirname(os.path.realpath(__file__))
+        if not os.path.isdir('%s/output' % self.directory):
+            os.mkdir('%s/output' % self.directory)
+
         self.spread = gspread.login(os.environ.get('ACCOUNT_USER'), os.environ.get('ACCOUNT_KEY'))
         self.sheet_name = sheet_name
         if worksheet:
