@@ -5,6 +5,7 @@ import sys
 import json
 import doctest
 import gspread
+from collections import defaultdict, OrderedDict
 # from filewrapper import FileWrapper
 from optparse import OptionParser
 
@@ -13,6 +14,7 @@ class Sheet:
     """ Handle google spreadsheet read and flatfile write operations.
         >>> sheet = Sheet('test-sheet', 'worksheet-name')
         >>> sheet.publish()
+        True
         """
 
     def __init__(self, sheet_name, worksheet=None):
@@ -22,7 +24,7 @@ class Sheet:
         self.spread = gspread.login(os.environ.get('ACCOUNT_USER'), os.environ.get('ACCOUNT_KEY'))
         self.sheet_name = sheet_name
         if worksheet:
-            self.open_sheet(worksheet)
+            self.open_worksheet(worksheet)
             self.worksheet = worksheet
 
     def slugify(self, slug):
@@ -32,6 +34,7 @@ class Sheet:
         """ Open a spreadsheet, return a sheet object.
             >>> sheet = Sheet('test-sheet')
             >>> sheet.open_worksheet('worksheet-name')
+            <Worksheet 'worksheet-name' id:od6>
             """
         self.sheet = self.spread.open(self.sheet_name).worksheet(worksheet)
         return self.sheet
@@ -59,15 +62,15 @@ class Sheet:
             if i == 0:
                 keys = row
                 continue
-            record = dict(zip(keys, row))
+            record = OrderedDict(zip(keys, row))
             print record
 
         return True
 
 
 def main():
-    sheet = Sheet()
-    sheet.publish('Homicide Report', 'responses')
+    sheet = Sheet('Homicide Report', 'responses')
+    sheet.publish()
 
 if __name__ == '__main__':
     parser = OptionParser()
