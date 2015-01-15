@@ -42,13 +42,34 @@ class Sheet:
             >>> sheet.add_filter('name', 'test')
             True
             >>> sheet.filters
-            [{'key': 'name', 'value': 'test'}]
+            [{'value': 'test', 'key': 'name'}]
             """
         if self.filters:
             self.filters.append({'key': key, 'value': value})
         else:
             self.filters = [{'key': key, 'value': value}]
         return True
+
+    def build_filename(self):
+        """ Put together the name of the file we're writing. This is based
+            on the worksheet name and any filters.
+            >>> sheet = Sheet('test-sheet', 'worksheet-name')
+            >>> sheet.add_filter('name', 'test')
+            True
+            >>> sheet.build_filename()
+            True
+            >>> sheet.filename
+            'worksheet-name-test'
+            """
+        filter_string = ''
+        if self.filters:
+            filter_string += '-'
+            for item in self.filters:
+                filter_string += item['value'].lower()
+
+        self.filename = '%s%s' % (self.worksheet, filter_string)
+        return True
+            
 
     def open_worksheet(self, worksheet):
         """ Open a spreadsheet, return a sheet object.
@@ -72,6 +93,8 @@ class Sheet:
         if not worksheet:
             worksheet = self.worksheet
 
+        self.build_filename()
+
         rows = self.sheet.get_all_values()
         keys = rows[0]
         fn = {
@@ -94,8 +117,7 @@ class Sheet:
 
             if publish:
                 recordwriter.writerow(row)
-                # *** Write to CSV & JSON files here. 
-                # *** Also consider what filtering we may need to do based on fields in the dict.
+                # *** Write to JSON files here. 
 
         return True
 
