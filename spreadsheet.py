@@ -4,6 +4,7 @@ import os
 import sys
 import json
 import doctest
+import csv
 import gspread
 from collections import defaultdict, OrderedDict
 # from filewrapper import FileWrapper
@@ -75,11 +76,13 @@ class Sheet:
         keys = rows[0]
         fn = {
             'json': open('%s/output/%s.json' % (self.directory, worksheet), 'w'),
-            'csv': open('%s/output/%s.csv' % (self.directory, worksheet), 'w')
+            'csv': open('%s/output/%s.csv' % (self.directory, worksheet), 'wb')
         }
+        recordwriter = csv.writer(fn['csv'], delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         for i, row in enumerate(rows):
             if i == 0:
                 keys = row
+                recordwriter.writerow(keys)
                 continue
             record = OrderedDict(zip(keys, row))
 
@@ -90,7 +93,7 @@ class Sheet:
                         publish = False
 
             if publish:
-                pass
+                recordwriter.writerow(row)
                 # *** Write to CSV & JSON files here. 
                 # *** Also consider what filtering we may need to do based on fields in the dict.
 
