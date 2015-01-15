@@ -25,7 +25,9 @@ class Sheet:
         if not os.path.isdir('%s/output' % self.directory):
             os.mkdir('%s/output' % self.directory)
 
-        self.spread = gspread.login(os.environ.get('ACCOUNT_USER'), os.environ.get('ACCOUNT_KEY'))
+        self.spread = gspread.login(
+            os.environ.get('ACCOUNT_USER'),
+            os.environ.get('ACCOUNT_KEY'))
         self.sheet_name = sheet_name
         self.filters = None
         if worksheet:
@@ -69,7 +71,6 @@ class Sheet:
 
         self.filename = '%s%s' % (self.worksheet, filter_string)
         return True
-            
 
     def open_worksheet(self, worksheet):
         """ Open a spreadsheet, return a sheet object.
@@ -101,7 +102,8 @@ class Sheet:
             'json': open('%s/output/%s.json' % (self.directory, self.filename), 'wb'),
             'csv': open('%s/output/%s.csv' % (self.directory, self.filename), 'wb')
         }
-        recordwriter = csv.writer(fn['csv'], delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        recordwriter = csv.writer(
+            fn['csv'], delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         for i, row in enumerate(rows):
             if i == 0:
                 keys = row
@@ -117,7 +119,7 @@ class Sheet:
 
             if publish:
                 recordwriter.writerow(row)
-                # *** Write to JSON files here. 
+                # *** Write to JSON files here.
 
         return True
 
@@ -138,7 +140,7 @@ if __name__ == '__main__':
     parser.add_option("-v", "--verbose", dest="verbose", default=False, action="store_true")
     (options, args) = parser.parse_args()
 
-    if options.verbose == True:
+    if options.verbose:
         doctest.testmod(verbose=options.verbose)
 
     main(args)
