@@ -10,3 +10,10 @@ def test_publish():
     sheet = Sheet('test-sheet', 'worksheet-name')
     publish_value = sheet.publish()
     assert publish_value == True
+
+def test_filters():
+    """ Test adding a filter to the sheet.
+        """
+    sheet = Sheet('test-sheet', 'worksheet-name')
+    sheet.add_filter('name', 'test')
+    assert sheet.filters == [['name', 'test']]
