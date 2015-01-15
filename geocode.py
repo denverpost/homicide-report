@@ -17,7 +17,7 @@ class Geocode:
         if not os.path.isdir('geocode'):
             os.mkdir('geocode')
 
-    def __self__(self):
+    def __repr__(self):
         return self.lookup
 
     def set_lookup(self, lookup):

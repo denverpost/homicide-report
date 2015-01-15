@@ -8,11 +8,11 @@ def test_setup():
     """ Can we even create an object?
         """
     g = Geocode('Portland, OR')
-    assert g.__self__() == 'Portland, OR'
+    assert g == 'Portland, OR'
 
 def test_geocode():
     """ Test geocoding.
         """
     g = Geocode('Portland, OR')
     latlng = g.get()
-    assert latlng == ['45.5230622', '-122.6764816']
+    assert latlng == [45.5230622, -122.6764816]
