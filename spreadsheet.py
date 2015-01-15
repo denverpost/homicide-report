@@ -63,7 +63,9 @@ class Sheet:
                 keys = row
                 continue
             record = OrderedDict(zip(keys, row))
-            print record
+            # print record
+            # *** Write to CSV & JSON files here. 
+            # *** Also consider what filtering we may need to do based on fields in the dict.
 
         return True
 

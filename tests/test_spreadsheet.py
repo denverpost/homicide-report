@@ -8,4 +8,5 @@ def test_publish():
     """ Test the Sheet's publish method.
         """
     sheet = Sheet('test-sheet', 'worksheet-name')
-    sheet.publish()
+    publish_value = sheet.publish()
+    assert publish_value == True
