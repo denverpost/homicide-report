@@ -17,8 +17,8 @@ class Sheet:
         True
         """
 
-    def __init__(self, options, sheet_name, worksheet=None):
-        self.options = options
+    def __init__(self, sheet_name, worksheet=None):
+        self.options = None
         self.directory = os.path.dirname(os.path.realpath(__file__))
         if not os.path.isdir('%s/output' % self.directory):
             os.mkdir('%s/output' % self.directory)
@@ -31,6 +31,12 @@ class Sheet:
         if worksheet:
             self.open_worksheet(worksheet)
             self.worksheet = worksheet
+
+    def set_options(self, options):
+        """ Set the objects options var.
+            """
+        self.options = options
+        return options
 
     def slugify(self, slug):
         return slug.lower().replace(' ', '-')
@@ -117,6 +123,12 @@ class Sheet:
                         publish = False
 
             if publish:
+                if self.options and self.options.geocode:
+                    if record['Latitude'] == '' or record['Longitude'] == '':
+                        geo = Geocode('%s, %s' % (record['Address of homicide'], record['City']))
+                        latlng = geo.get()
+                        record['Latitude'] = latlng.split(',')[0]
+                        record['Longitude'] = latlng.split(',')[1]
                 recordwriter.writerow(row)
                 records += [record]
 
@@ -131,7 +143,8 @@ def main(options, args):
         Example command:
         $ python spreadsheet.py City=Denver
         """
-    sheet = Sheet(options, 'Homicide Report', 'responses')
+    sheet = Sheet('Homicide Report', 'responses')
+    sheet.set_options(options)
     for arg in args:
         if '=' not in arg:
             continue
