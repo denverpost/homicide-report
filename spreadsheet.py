@@ -27,10 +27,10 @@ class Sheet:
     def slugify(self, slug):
         return slug.lower().replace(' ', '-')
 
-    def open_sheet(self, worksheet, options=None):
+    def open_worksheet(self, worksheet, options=None):
         """ Open a spreadsheet, return a sheet object.
             >>> sheet = Sheet('test-sheet')
-            >>> sheet.open_sheet('worksheet-name')
+            >>> sheet.open_worksheet('worksheet-name')
             """
         self.sheet = self.spread.open(self.sheet_name).worksheet(worksheet)
         return self.sheet
@@ -42,7 +42,7 @@ class Sheet:
             True
             """
         if not self.sheet or worksheet:
-            self.sheet = self.open_sheet(worksheet)
+            self.sheet = self.open_worksheet(worksheet)
 
         if not worksheet:
             worksheet = self.worksheet
