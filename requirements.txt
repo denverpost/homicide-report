@@ -3,4 +3,5 @@ gspread==0.2.2
 pep8==1.5.7
 py==1.4.26
 pytest==2.6.4
+slugify==0.0.1
 wsgiref==0.1.2

@@ -1,16 +1,19 @@
 #!/usr/bin/env python
 import geocoder
+import slugify
 from filewrapper import FileWrapper
 
-class geocode:
+class Geocode:
     """ Lookup lat/lngs, and maintain cached geocode lookups.
         Returns two values (lat, lng) if available, False if not.
-        >>> geo = geocode('Portland, OR')
-        >>> lat, lng = geo.get()
+        >>> geo = Geocode('Portland, OR')
+        >>> latlng = geo.get()
         """
 
     def __init__(self, lookup):
         self.lookup = lookup
+        if not os.path.isdir('geocode'):
+            os.mkdir('geocode')
 
     def set_lookup(self, lookup):
         """ Update the lookup value.
@@ -41,11 +44,11 @@ class geocode:
             geo_parts = fh.read()
             if "," in geo_parts:
                 return geo_parts.split(',')
-            return False, False
+            return False
         try:
             g = geocoder.google(self.lookup)
             fh.write("%s,%s" % ( g.lat, g.lng ))
-            return g.lat, g.lng
+            return [g.lat, g.lng]
         except:
-            return False, False
-        return False, False
+            return False
+        return False
