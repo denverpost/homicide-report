@@ -16,4 +16,4 @@ def test_filters():
         """
     sheet = Sheet('test-sheet', 'worksheet-name')
     sheet.add_filter('name', 'test')
-    assert sheet.filters == [['name', 'test']]
+    assert sheet.filters == [{'value': 'test', 'key': 'name'}]

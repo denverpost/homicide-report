@@ -41,12 +41,12 @@ class Sheet:
             >>> sheet.add_filter('name', 'test')
             True
             >>> sheet.filters
-            [['name', 'test']]
+            [{'key': 'name', 'value': 'test'}]
             """
         if self.filters:
-            self.filters.append([key, value])
+            self.filters.append({'key': key, 'value': value})
         else:
-            self.filters = [[key, value]]
+            self.filters = [{'value': 'test', 'key': 'name'}]
         return True
 
     def open_worksheet(self, worksheet):
@@ -82,6 +82,11 @@ class Sheet:
                 keys = row
                 continue
             record = OrderedDict(zip(keys, row))
+
+            if self.filters:
+                for item in self.filters:
+                    if record[item['key']] != item['value']:
+                        continue
             # print record
             # *** Write to CSV & JSON files here. 
             # *** Also consider what filtering we may need to do based on fields in the dict.
