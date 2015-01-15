@@ -7,7 +7,6 @@ import doctest
 import csv
 import gspread
 from collections import defaultdict, OrderedDict
-# from filewrapper import FileWrapper
 from optparse import OptionParser
 
 
@@ -19,7 +18,6 @@ class Sheet:
         """
 
     def __init__(self, sheet_name, worksheet=None):
-        # self.fw = FileWrapper()
         self.verbose = True
         self.directory = os.path.dirname(os.path.realpath(__file__))
         if not os.path.isdir('%s/output' % self.directory):
@@ -130,6 +128,8 @@ class Sheet:
 
 def main(args):
     """ Take args as key=value pairs, pass them to the add_filter method.
+        Example command:
+        $ python spreadsheet.py City=Denver
         """
     sheet = Sheet('Homicide Report', 'responses')
     for arg in args:
