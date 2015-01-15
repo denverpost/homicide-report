@@ -17,8 +17,8 @@ class Sheet:
         True
         """
 
-    def __init__(self, sheet_name, worksheet=None):
-        self.verbose = True
+    def __init__(self, options, sheet_name, worksheet=None):
+        self.options = options
         self.directory = os.path.dirname(os.path.realpath(__file__))
         if not os.path.isdir('%s/output' % self.directory):
             os.mkdir('%s/output' % self.directory)
@@ -126,12 +126,12 @@ class Sheet:
         return True
 
 
-def main(args):
+def main(options, args):
     """ Take args as key=value pairs, pass them to the add_filter method.
         Example command:
         $ python spreadsheet.py City=Denver
         """
-    sheet = Sheet('Homicide Report', 'responses')
+    sheet = Sheet(options, 'Homicide Report', 'responses')
     for arg in args:
         if '=' not in arg:
             continue
@@ -141,10 +141,11 @@ def main(args):
 
 if __name__ == '__main__':
     parser = OptionParser()
+    parser.add_option("-g", "--geocode", dest="geocode", default=False, action="store_true")
     parser.add_option("-v", "--verbose", dest="verbose", default=False, action="store_true")
     (options, args) = parser.parse_args()
 
     if options.verbose:
         doctest.testmod(verbose=options.verbose)
 
-    main(args)
+    main(options, args)
