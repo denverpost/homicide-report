@@ -26,12 +26,28 @@ class Sheet:
 
         self.spread = gspread.login(os.environ.get('ACCOUNT_USER'), os.environ.get('ACCOUNT_KEY'))
         self.sheet_name = sheet_name
+        self.filters = None
         if worksheet:
             self.open_worksheet(worksheet)
             self.worksheet = worksheet
 
     def slugify(self, slug):
         return slug.lower().replace(' ', '-')
+
+    def add_filter(self, key, value):
+        """ Add a filter we will parse the spreadsheet by. Key should match
+            a key in the spreadsheet (capitalization matters).
+            >>> sheet = Sheet('test-sheet', 'worksheet-name')
+            >>> sheet.add_filter('name', 'test')
+            True
+            >>> sheet.filters
+            [['name', 'test']]
+            """
+        if self.filters:
+            self.filters.append([key, value])
+        else:
+            self.filters = [[key, value]]
+        return True
 
     def open_worksheet(self, worksheet):
         """ Open a spreadsheet, return a sheet object.
@@ -73,8 +89,15 @@ class Sheet:
         return True
 
 
-def main():
+def main(args):
+    """ Take args as key=value pairs, pass them to the add_filter method.
+        """
     sheet = Sheet('Homicide Report', 'responses')
+    for arg in args:
+        if '=' not in arg:
+            continue
+        k, v = arg.split('=')
+        sheet.add_filter(k, v)
     sheet.publish()
 
 if __name__ == '__main__':
@@ -84,4 +107,4 @@ if __name__ == '__main__':
 
     doctest.testmod(verbose=options.verbose)
 
-    main()
+    main(args)
