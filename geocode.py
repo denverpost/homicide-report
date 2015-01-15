@@ -1,19 +1,24 @@
 #!/usr/bin/env python
+import os
 import geocoder
 import slugify
 from filewrapper import FileWrapper
 
 class Geocode:
     """ Lookup lat/lngs, and maintain cached geocode lookups.
-        Returns two values (lat, lng) if available, False if not.
+        Returns a list with two values (lat, lng) if available, False if not.
         >>> geo = Geocode('Portland, OR')
-        >>> latlng = geo.get()
+        >>> print geo.get()
+        [45.5230622, -122.6764816]
         """
 
     def __init__(self, lookup):
         self.lookup = lookup
         if not os.path.isdir('geocode'):
             os.mkdir('geocode')
+
+    def __self__(self):
+        return self.lookup
 
     def set_lookup(self, lookup):
         """ Update the lookup value.

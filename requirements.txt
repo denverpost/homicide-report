@@ -1,7 +1,10 @@
 autoenv==1.0.0
+geocoder==1.0.4
 gspread==0.2.2
+httplib2==0.9
 pep8==1.5.7
 py==1.4.26
 pytest==2.6.4
+requests==2.5.1
 slugify==0.0.1
 wsgiref==0.1.2
