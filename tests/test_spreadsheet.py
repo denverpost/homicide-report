@@ -17,3 +17,11 @@ def test_filters():
     sheet = Sheet('test-sheet', 'worksheet-name')
     sheet.add_filter('name', 'test')
     assert sheet.filters == [{'value': 'test', 'key': 'name'}]
+
+def test_filename():
+    """ Test the build_filename() method.
+        """
+    sheet = Sheet('test-sheet', 'worksheet-name')
+    sheet.add_filter('name', 'test')
+    sheet.build_filename()
+    assert sheet.filename == 'worksheet-name-test'

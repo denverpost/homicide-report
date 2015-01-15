@@ -98,8 +98,8 @@ class Sheet:
         rows = self.sheet.get_all_values()
         keys = rows[0]
         fn = {
-            'json': open('%s/output/%s.json' % (self.directory, worksheet), 'w'),
-            'csv': open('%s/output/%s.csv' % (self.directory, worksheet), 'wb')
+            'json': open('%s/output/%s.json' % (self.directory, self.filename), 'wb'),
+            'csv': open('%s/output/%s.csv' % (self.directory, self.filename), 'wb')
         }
         recordwriter = csv.writer(fn['csv'], delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         for i, row in enumerate(rows):
