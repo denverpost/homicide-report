@@ -65,7 +65,7 @@ class Sheet:
         if self.filters:
             filter_string += '-'
             for item in self.filters:
-                filter_string += item['value'].lower()
+                filter_string += self.slugify(item['value'])
 
         self.filename = '%s%s' % (self.worksheet, filter_string)
         return True
