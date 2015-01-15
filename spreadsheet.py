@@ -104,6 +104,7 @@ class Sheet:
         }
         recordwriter = csv.writer(
             fn['csv'], delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        records = []
         for i, row in enumerate(rows):
             if i == 0:
                 keys = row
@@ -119,7 +120,10 @@ class Sheet:
 
             if publish:
                 recordwriter.writerow(row)
-                # *** Write to JSON files here.
+                records += [record]
+
+        if records:
+            json.dump(records, fn['json'])
 
         return True
 
