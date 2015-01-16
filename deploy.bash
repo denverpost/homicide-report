@@ -11,5 +11,11 @@ for CITY in Denver "El Paso"; do
 
     # Write the flat files
     python spreadsheet.py City="$CITY"
+
+    # *** UPDATE AT THE START OF EACH YEAR
+    for YEAR in 2014 2015; do
+        python spreadsheet.py City="$CITY" Year=$YEAR
+    done
+
     ls -lth output/*$slug*
 done
