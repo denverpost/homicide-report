@@ -8,7 +8,7 @@ def test_setup():
     """ Can we even create an object?
         """
     g = Geocode('Portland, OR')
-    assert g == 'Portland, OR'
+    assert g == True
 
 def test_geocode():
     """ Test geocoding.

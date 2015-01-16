@@ -18,7 +18,8 @@ class Geocode:
             os.mkdir('geocode')
 
     def __repr__(self):
-        return u'%s' % self.lookup
+        # return u'%s' % self.lookup
+        return True
 
     def set_lookup(self, lookup):
         """ Update the lookup value.
