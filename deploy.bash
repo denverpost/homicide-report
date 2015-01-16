@@ -25,3 +25,5 @@ done
 for YEAR in 2014 2015; do
     python spreadsheet.py Year=$YEAR
 done
+
+# *** FTP the files here
