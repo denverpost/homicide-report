@@ -19,3 +19,9 @@ for CITY in Denver "El Paso"; do
 
     ls -lth output/*$slug*
 done
+
+# Output the whole year's spreadsheet
+# *** UPDATE AT THE START OF EACH YEAR
+for YEAR in 2014 2015; do
+    python spreadsheet.py Year=$YEAR
+done

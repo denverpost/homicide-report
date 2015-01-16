@@ -120,7 +120,7 @@ class Sheet:
             if self.filters:
                 for item in self.filters:
                     # Special handling for filtering by years. Hard-coded.
-                    if record[item['key']] == 'Year':
+                    if item['key'] == 'Year':
                         if item['value'] not in record['Date of homicide']:
                             publish = False
                     elif record[item['key']] != item['value']:
