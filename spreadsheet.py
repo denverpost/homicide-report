@@ -129,6 +129,7 @@ class Sheet:
                         latlng = geo.get()
                         record['Latitude'] = latlng.split(',')[0]
                         record['Longitude'] = latlng.split(',')[1]
+                        # *** Still need to write these values back to the spreadsheet
                 recordwriter.writerow(row)
                 records += [record]
 
