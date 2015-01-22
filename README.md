@@ -1,6 +1,19 @@
 # Homicide Report
 ![Homicide Report Tests](https://api.travis-ci.org/denverpost/homicide-report.png)
 
+# Project Setup
+The back-end, spreadsheet-publishing portion assumes these environment variables:
+```
+# The spreadsheet user account
+export ACCOUNT_USER='user@gmail.com'
+# The spreadsheet user's account key
+export ACCOUNT_KEY=''
+# The production FTP server's user, directory the files will be uploaded to, and hostname.
+export FTP_USER=''
+export REMOTE_DIR=''
+export REMOTE_HOST=''
+```
+
 # License
 Copyright © 2015 The Denver Post
 
