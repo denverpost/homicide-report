@@ -1,7 +1,12 @@
 #!/bin/bash
 # Publish these files.
+# Assumes a virtualenv named HOMICIDE, as well as virtualenvwrapper.
+# pip insall virtualenv; pip install virtualenvwrapper
 
-for CITY in Denver "El Paso"; do
+workon HOMICIDE
+CURRENT_YEAR=2015
+
+for CITY in Denver "El Paso" Louisville Portland; do
     # Prep the variables
     echo $CITY
 
@@ -26,4 +31,4 @@ for YEAR in 2014 2015; do
     python spreadsheet.py Year=$YEAR
 done
 
-# *** FTP the files here
+./ftp.bash --dir $REMOTE_DIR --host $REMOTE_HOST
