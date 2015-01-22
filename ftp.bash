@@ -1,16 +1,17 @@
 #!/bin/bash
 # ftp files from one directory to another.
 # Assumes credentials are stored in a file in the home directory named .ftppass
-# Variables can be set in the environment, or by command line argument
+# The password and username can be set in the environment (export FTP_PASS='pass')
+# Alternately, the password can be stored is a file in the user's root dir, named .ftp_pass.
 #
 #
 # NOTE: FTP IS AN INSECURE PROTOCOL AND SHOULD BE AVOIDED.
 
-SOURCEDIR=''
+SOURCEDIR='output'
 DIR=''
 HOST=''
-USER=''
-PASS=`cat ~/.ftp_pass`
+if [ -z "$FTP_USER" ]; then FTP_USER=''; fi
+if [ -z "$FTP_PASS" ]; then FTP_PASS=`cat ~/.ftp_pass`; fi
 FILES='*'
 while [ "$1" != "" ]; do
     case $1 in
@@ -21,7 +22,7 @@ while [ "$1" != "" ]; do
             HOST=$1
             ;;
         -u | --user ) shift
-            USER=$1
+            FTP_USER=$1
             ;;
         -f | --files ) shift
             FILES=$1
@@ -32,7 +33,7 @@ done
 
 cd $SOURCEDIR
 ftp -v -n $HOST << EOF
-user $USER $PASS
+user $FTP_USER $FTP_PASS
 cd $DIR
 bin
 passive
