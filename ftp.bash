@@ -41,6 +41,3 @@ prompt
 mput $FILES
 bye                                                                                                                                                                          
 EOF
-
-#for FILE in `ls *.html`; do echo "mput $FILE"; done
-
