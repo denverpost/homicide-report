@@ -6,7 +6,12 @@ import json
 import doctest
 import csv
 import gspread
-from collections import defaultdict, OrderedDict
+from collections import defaultdict
+try:
+    from collections import OrderedDict
+except ImportError:
+    # python 2.6 or earlier, use backport
+    from ordereddict import OrderedDict
 from optparse import OptionParser
 
 
