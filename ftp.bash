@@ -7,7 +7,7 @@
 #
 # NOTE: FTP IS AN INSECURE PROTOCOL AND SHOULD BE AVOIDED.
 
-SOURCEDIR='output'
+SOURCE_DIR='output'
 DIR=''
 HOST=''
 if [ -z "$FTP_USER" ]; then FTP_USER=''; fi
@@ -31,7 +31,7 @@ while [ "$1" != "" ]; do
     shift
 done
 
-cd $SOURCEDIR
+cd $SOURCE_DIR
 ftp -v -n $HOST << EOF
 user $FTP_USER $FTP_PASS
 cd $DIR
