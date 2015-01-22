@@ -4,6 +4,8 @@
 # The password and username can be set in the environment (export FTP_PASS='pass')
 # Alternately, the password can be stored is a file in the user's root dir, named .ftp_pass.
 #
+# Example usage:
+# ./ftp.bash --dir /path/to/where/you/want/the/files --host ftp.domain.com
 #
 # NOTE: FTP IS AN INSECURE PROTOCOL AND SHOULD BE AVOIDED.
 
