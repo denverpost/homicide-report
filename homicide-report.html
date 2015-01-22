@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+
+	<title>DataTables example - Flat array data source</title>
+	<link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/projects/2015/datatables/media/css/jquery.dataTables.css">
+	<link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/projects/2015/datatables/examples/resources/syntax/shCore.css">
+	<link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/projects/2015/datatables/examples/resources/demo.css">
+	<style type="text/css" class="init">
+
+	</style>
+	<script type="text/javascript" language="javascript" src="http://extras.denverpost.com/projects/2015/datatables/media/js/jquery.js"></script>
+	<script type="text/javascript" language="javascript" src="http://extras.denverpost.com/projects/2015/datatables/media/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="http://extras.denverpost.com/projects/2015/datatables/examples/resources/syntax/shCore.js"></script>
+	<script type="text/javascript" language="javascript" src="http://extras.denverpost.com/projects/2015/datatables/examples/resources/demo.js"></script>
+	<script type="text/javascript" language="javascript" class="init">
+
+$(document).ready(function() {
+	$('#example').dataTable( {
+		"ajax": {
+			"url": "http://extras.denverpost.com/projects/2015/datatables//examples/ajax/data/homicide-data.txt",
+			"dataSrc": ""
+		},
+		"columns": [
+			{ "data": "Timestamp" },
+			{ "data": "City" },
+			{ "data": "Date of homicide"},
+			{ "data": "Time of homicide"},
+			{ "data": "Name of deceased"},
+			{ "data": "Neighborhood"},
+			{ "data": "Age"},
+			{ "data": "Gender"}
+		]
+	} );
+} );
+
+	</script>
+</head>
+
+<body class="dt-example">
+	<div class="container">
+		<section>
+
+			<table id="example" class="display" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th>Timestamp</th>
+						<th>City</th>
+						<th>Date of homicide</th>
+						<th>Time of homicide</th>
+						<th>Name of deceased</th>
+						<th>Neighborhood</th>
+						<th>Age</th>
+						<th>Gender</th>
+					</tr>
+				</thead>
+
+				<tfoot>
+					<tr>
+						<th>Timestamp</th>
+						<th>City</th>
+						<th>Date of homicide</th>
+						<th>Time of homicide</th>
+						<th>Name of deceased</th>
+						<th>Neighborhood</th>
+						<th>Age</th>
+						<th>Gender</th>
+					</tr>
+				</tfoot>
+			</table>
+		
+	</section>
+</div>
+</body>
+</html>
