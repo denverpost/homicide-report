@@ -6,7 +6,7 @@
 workon HOMICIDE
 CURRENT_YEAR=2015
 
-for CITY in Denver "El Paso" Louisville Portland; do
+for CITY in Denver "El Paso" Louisville Portland Nashville; do
     # Prep the variables
     echo $CITY
 

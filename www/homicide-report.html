@@ -40,7 +40,7 @@ $(document).ready(function() {
     if ( homicides.city !== '' ) homicides.filename += '-' + homicides.city;
     if ( homicides.year !== '' ) homicides.filename += homicides.year;
 
-	$('#example').dataTable( {
+	$('#homicides').dataTable( {
 		"ajax": {
 			//"url": "http://extras.denverpost.com/projects/2015/datatables/examples/ajax/data/homicide-data.txt",
 			"url": 'output/' + homicides.filename + '.json',
@@ -52,7 +52,9 @@ $(document).ready(function() {
 			{ "data": "Time of homicide"},
 			{ "data": "Neighborhood"},
 			{ "data": "Age"},
-			{ "data": "Gender"}
+			{ "data": "Gender"},
+			{ "data": "Cause of death"},
+			{ "data": "Article URL"}
 		]
 	} );
 } );
@@ -60,19 +62,21 @@ $(document).ready(function() {
 	</script>
 </head>
 
-<body class="dt-example">
+<body class="dt">
 	<div class="container">
 		<section>
 
-			<table id="example" class="display" cellspacing="0" width="100%">
+			<table id="homicides" class="display" cellspacing="0" width="100%">
 				<thead>
 					<tr>
 						<th>Name of deceased</th>
 						<th>Date of homicide</th>
-						<th>Time of homicide</th>
+						<th>Time</th>
 						<th>Neighborhood</th>
 						<th>Age</th>
 						<th>Gender</th>
+						<th>Cause</th>
+						<th>Link</th>
 					</tr>
 				</thead>
 
@@ -80,10 +84,12 @@ $(document).ready(function() {
 					<tr>
 						<th>Name of deceased</th>
 						<th>Date of homicide</th>
-						<th>Time of homicide</th>
+						<th>Time</th>
 						<th>Neighborhood</th>
 						<th>Age</th>
 						<th>Gender</th>
+						<th>Cause</th>
+						<th>Link</th>
 					</tr>
 				</tfoot>
 			</table>
