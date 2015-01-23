@@ -28,17 +28,17 @@
 
 <h1>Homicide Report Example Usage</h1>
 
-<h2>Publish a list of homicides:</h2>
+<h2 id="list-example">Publish a list of homicides:</h2>
 <p>Change the city below: 
-    <a href="#el-paso" onClick="update_iframe('homicide-list', 'el-paso');">El Paso</a>,
-    <a href="#denver" onClick="update_iframe('homicide-list', 'denver');">Denver</a>,
-    <a href="#nashville" onClick="update_iframe('homicide-list', 'nashville');">Nashville</a>,
-    <a href="#louisville" onClick="update_iframe('homicide-list', 'louisville');">Louisville</a>,
-    <a href="#portland" onClick="update_iframe('homicide-list', 'portland');">Portland</a>
+    <a href="#el-paso" onClick="update_iframe('el-paso');">El Paso</a>,
+    <a href="#denver" onClick="update_iframe('denver');">Denver</a>,
+    <a href="#nashville" onClick="update_iframe('nashville');">Nashville</a>,
+    <a href="#louisville" onClick="update_iframe('louisville');">Louisville</a>,
+    <a href="#portland" onClick="update_iframe('portland');">Portland</a>
 </p>
 <iframe id="homicide-list" class="homicides" src="list.html?city=el-paso" frameborder="0" allowfullscreen scrolling="no" seamless></iframe>
 <h3>Markup used to publish this list:</h3>
-<p>Note: Change the "city" value to your city. Replace spaces with hyphens.</p>
+<p>Note: Change the "city" value to your city. Replace spaces in the city name with hyphens.</p>
 <pre class="code">
     &lt;script src="http://extras.denverpost.com/app/homicide-report/application.js">&lt;/script><br>
     &lt;iframe src="http://extras.denverpost.com/app/homicide-report/list.html?city=<span id="list-city">el-paso</span>" frameborder="0" allowfullscreen scrolling="no" seamless>&lt;/iframe><br>
@@ -47,17 +47,31 @@
     &lt;/style>
 </pre>
 
-<!--
-<h2>`Publish a map of your city's homicides:</h2>
--->
+<h2 id="map-example">Publish a map of your city's homicides:</h2>
+<iframe id="homicide-map" class="homicides" src="map.html?city=el-paso" frameborder="0" allowfullscreen scrolling="no" seamless></iframe>
+<h3>Markup used to publish this list:</h3>
+<p>Note: Change the "city" value to your city. Replace spaces in the city name with hyphens.</p>
+<pre class="code">
+    &lt;script src="http://extras.denverpost.com/app/homicide-report/application.js">&lt;/script><br>
+    &lt;iframe src="http://extras.denverpost.com/app/homicide-report/map.html?city=<span id="map-city">el-paso</span>" frameborder="0" allowfullscreen scrolling="no" seamless>&lt;/iframe><br>
+    &lt;style type="text/css"><br>
+    iframe.homicides { width: 100%; height: 400px; }<br>
+    &lt;/style>
+</pre>
+
+
+
+
 <script>
 // Javascript for managing the example page.
 // Edit the page:
 var city = 'el-paso';
 function update_iframe(id, new_city)
 {
-    document.getElementById(id).src = document.getElementById(id).src.replace(city, new_city);
+    document.getElementById('homicide-list').src = document.getElementById('homicide-list').src.replace(city, new_city);
+    document.getElementById('homicide-map').src = document.getElementById('homicide-map').src.replace(city, new_city);
     document.getElementById('list-city').innerHTML = new_city;
+    document.getElementById('map-city').innerHTML = new_city;
     city = new_city;
 }
 
@@ -68,6 +82,7 @@ function init()
     {
         var city = document.location.hash.substring(1);
         update_iframe('homicide-list', city);
+        update_iframe('homicide-map', city);
     }
 }
 </script>
