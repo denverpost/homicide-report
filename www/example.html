@@ -69,7 +69,7 @@
 var city = 'el-paso';
 function update_iframe(new_city)
 {
-    document.getElementById('homicide-list').src = document.getElementById('homicide-list').src.replace("city=" + city, "city=" +new_city);
+    document.getElementById('homicide-list').src = document.getElementById('homicide-list').src.replace("city=" + city, "city=" + new_city);
     document.getElementById('homicide-map').src = document.getElementById('homicide-map').src.replace("city=" + city, "city=" + new_city);
     document.getElementById('list-city').innerHTML = new_city;
     document.getElementById('map-city').innerHTML = new_city;
@@ -81,8 +81,8 @@ function init()
 {
     if ( document.location.hash !== '' )
     {
-        window.city = document.location.hash.substring(1);
-        update_iframe(window.city);
+        var new_city = document.location.hash.substring(1);
+        update_iframe(new_city);
     }
 }
 </script>
