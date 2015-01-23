@@ -68,11 +68,11 @@
 var city = 'el-paso';
 function update_iframe(id, new_city)
 {
-    document.getElementById('homicide-list').src = document.getElementById('homicide-list').src.replace(city, new_city);
-    document.getElementById('homicide-map').src = document.getElementById('homicide-map').src.replace(city, new_city);
+    document.getElementById('homicide-list').src = document.getElementById('homicide-list').src.replace("city=" + city, "city=" +new_city);
+    document.getElementById('homicide-map').src = document.getElementById('homicide-map').src.replace("city=" + city, "city=" + new_city);
     document.getElementById('list-city').innerHTML = new_city;
     document.getElementById('map-city').innerHTML = new_city;
-    city = new_city;
+    window.city = new_city;
 }
 
 // Allow bookmarkable cities on this page
