@@ -47,7 +47,6 @@ $(document).ready(function() {
     $('#homicides').dataTable( {
         "responsive": true,
         "ajax": {
-            //"url": "http://extras.denverpost.com/projects/2015/datatables/examples/ajax/data/homicide-data.txt",
             "url": 'output/' + homicides.filename + '.json',
             "dataSrc": ""
         },
