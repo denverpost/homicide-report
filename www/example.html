@@ -8,8 +8,19 @@
     <meta http-equiv="Content-Language" content="en-us">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
+    <link rel="stylesheet" type="text/css" href="http://cdn.foundation5.zurb.com/foundation.css"></link>
     <style type="text/css">
     iframe.homicides { width: 100%; height: 400px; }
+    </style>
+
+    <style type="text/css">
+    /* Example page CSS that we don't need for the embeds */
+    pre.code 
+    {
+        background-color: #ddd; 
+        padding: 1em 0;
+        line-height: .75;
+    }
     </style>
 </head>
 <body>
@@ -19,12 +30,12 @@
 <h2>Publish a list of homicides:</h2>
 <iframe id="homicide-list" class="homicides" src="list.html?city=el-paso" frameborder="0" allowfullscreen scrolling="no" seamless></iframe>
 <h3>Markup used to publish this list:</h3>
-<code>
+<pre class="code">
     &lt;iframe src="list.html?city=el-paso" frameborder="0" allowfullscreen scrolling="no" seamless>&lt;/iframe><br>
     &lt;style type="text/css"><br>
     iframe.homicides { width: 100%; height: 400px; }<br>
     &lt;/style>
-</code>
+</pre>
 
 <h2>Publish a map of your city's homicides:</h2>
 </body>
