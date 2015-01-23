@@ -19,26 +19,31 @@
 
 $(document).ready(function() {
 
-    // Parse out the city and the year queryline arguments
-    var city = '';
-    var year = '';
+    // Parse out the city and the year query arguments
+    var homicides = {
+        city: '',
+        year: '',
+        filename: 'responses'
+    };
     if ( document.location.search !== '' )
     {
         var query_string = document.location.search.substring(1);
         var keyvalues = query_string.split('&');
-        var keyvalues_length = keyvalues.length();
+        var keyvalues_length = keyvalues.length;
         for ( i = 0; i < keyvalues_length; i ++ )
         {
             var keyvalue = keyvalues[i].split('=');
-            if ( keyvalue[0].toLowerCase() === 'city' ) city = keyvalue[1];
-            if ( keyvalue[0].toLowerCase() === 'year' ) year = keyvalue[1];
+            if ( keyvalue[0].toLowerCase() === 'city' ) homicides.city = keyvalue[1];
+            if ( keyvalue[0].toLowerCase() === 'year' ) homicides.year = keyvalue[1];
         }
     }
+    if ( homicides.city !== '' ) homicides.filename += '-' + homicides.city;
+    if ( homicides.year !== '' ) homicides.filename += homicides.year;
 
 	$('#example').dataTable( {
 		"ajax": {
 			//"url": "http://extras.denverpost.com/projects/2015/datatables/examples/ajax/data/homicide-data.txt",
-			"url": "homicide-data.txt",
+			"url": 'output/' + homicides.filename + '.json',
 			"dataSrc": ""
 		},
 		"columns": [
