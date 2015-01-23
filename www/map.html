@@ -8,15 +8,18 @@
     <meta http-equiv="Content-Language" content="en-us">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <script type="text/javascript" src="http://extras.denverpost.com/projects/2015/datatables/media/js/jquery.js"></script>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <style type="text/css">
+    body { margin: 0; padding: 0; }
+    #map { width:100%; height:500px; }
+    </style>
 
 </head>
 <body>
 
-</body>
+<div id="map"></div>
     <script>
-$(document).ready(function() {
 
     // Parse out the city and the year query arguments
     var homicides = {
@@ -39,6 +42,28 @@ $(document).ready(function() {
     if ( homicides.city !== '' ) homicides.filename += '-' + homicides.city;
     if ( homicides.year !== '' ) homicides.filename += homicides.year;
 
-});
-    </script>
+
+var latlongs = {
+    'denver': [39.7392, -104.9847],
+    'el-paso': [],
+    'nashville': [],
+    'portland': []
+}
+    
+// MAP
+var m = {
+    map: L.map('map').setView(latlongs[homicides.city], 12),
+    d: {}, //data
+    markers: {},
+    tile: 'http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg',
+    attribution: '<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, tiles courtesy of <a href="http://www.mapquest.com/">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png" scale="0">, <a href="http://leaf.ly">dispensary data courtesy Leafly</a>',
+}
+L.tileLayer(m.tile, {
+    attribution: map.attribution,
+    maxZoom: 16
+}).addTo(m.map);
+
+</script>
+
+</body>
 </html>
