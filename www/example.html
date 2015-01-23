@@ -22,26 +22,8 @@
         line-height: .75;
     }
     </style>
-    <script>
-    // Javascript for managing the example page.
-    // Edit the page:
-    var city = 'el-paso';
-    function update_iframe(id, new_city)
-    {
-        document.getElementById(id).src = document.getElementById(id).src.replace(city, new_city);
-        document.getElementById('list-city').innerHTML = new_city;
-        city = new_city;
-    }
-
-    // Allow bookmarkable cities on this page
-    if ( document.location.hash !== '' )
-    {
-        var city = document.location.hash.substring(1);
-        update_iframe('homicide-list', city);
-    }
-    </script>
 </head>
-<body>
+<body onLoad="init();">
 
 <h1>Homicide Report Example Usage</h1>
 
@@ -66,5 +48,26 @@
 <!--
 <h2>`Publish a map of your city's homicides:</h2>
 -->
+<script>
+// Javascript for managing the example page.
+// Edit the page:
+var city = 'el-paso';
+function update_iframe(id, new_city)
+{
+    document.getElementById(id).src = document.getElementById(id).src.replace(city, new_city);
+    document.getElementById('list-city').innerHTML = new_city;
+    city = new_city;
+}
+
+// Allow bookmarkable cities on this page
+function init()
+{
+    if ( document.location.hash !== '' )
+    {
+        var city = document.location.hash.substring(1);
+        update_iframe('homicide-list', city);
+    }
+}
+</script>
 </body>
 </html>
