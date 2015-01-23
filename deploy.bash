@@ -5,6 +5,7 @@
 # Also assumes env vars REMOTE_DIR and REMOTE_HOST:
 # export REMOTE_DIR='path/on/remote/server/to/publish'; export REMOTE_HOST='ftp.servername.com'
 
+source /usr/local/bin/virtualenvwrapper.sh
 workon HOMICIDE
 CURRENT_YEAR=2015
 
