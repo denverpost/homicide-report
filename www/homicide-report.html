@@ -8,14 +8,16 @@
 	<link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/projects/2015/datatables/media/css/jquery.dataTables.css">
 	<link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/projects/2015/datatables/examples/resources/syntax/shCore.css">
 	<link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/projects/2015/datatables/examples/resources/demo.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/responsive/1.0.3/css/dataTables.responsive.css">
 	<style type="text/css" class="init">
 
 	</style>
-	<script type="text/javascript" language="javascript" src="http://extras.denverpost.com/projects/2015/datatables/media/js/jquery.js"></script>
-	<script type="text/javascript" language="javascript" src="http://extras.denverpost.com/projects/2015/datatables/media/js/jquery.dataTables.js"></script>
-	<script type="text/javascript" language="javascript" src="http://extras.denverpost.com/projects/2015/datatables/examples/resources/syntax/shCore.js"></script>
-	<script type="text/javascript" language="javascript" src="http://extras.denverpost.com/projects/2015/datatables/examples/resources/demo.js"></script>
-	<script type="text/javascript" language="javascript" class="init">
+	<script type="text/javascript" src="http://extras.denverpost.com/projects/2015/datatables/media/js/jquery.js"></script>
+	<script type="text/javascript" src="http://extras.denverpost.com/projects/2015/datatables/media/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/responsive/1.0.3/js/dataTables.responsive.js">
+	<script type="text/javascript" src="http://extras.denverpost.com/projects/2015/datatables/examples/resources/syntax/shCore.js"></script>
+	<script type="text/javascript" src="http://extras.denverpost.com/projects/2015/datatables/examples/resources/demo.js"></script>
+	<script type="text/javascript" class="init">
 
 $(document).ready(function() {
 
@@ -41,6 +43,7 @@ $(document).ready(function() {
     if ( homicides.year !== '' ) homicides.filename += homicides.year;
 
 	$('#homicides').dataTable( {
+        "responsive": true,
 		"ajax": {
 			//"url": "http://extras.denverpost.com/projects/2015/datatables/examples/ajax/data/homicide-data.txt",
 			"url": 'output/' + homicides.filename + '.json',
@@ -66,7 +69,7 @@ $(document).ready(function() {
 	<div class="container">
 		<section>
 
-			<table id="homicides" class="display" cellspacing="0" width="100%">
+			<table id="homicides" class="display responsive" cellspacing="0" width="100%">
 				<thead>
 					<tr>
 						<th>Name of deceased</th>
