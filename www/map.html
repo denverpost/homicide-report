@@ -65,15 +65,16 @@ L.tileLayer(m.tile, {
 
 // Get the markers on the map
 $.getJSON( "output/" + homicides.filename + ".json", function(data) {
-        $.each(data, function(count, record) { console.log(record); }) });
-/*
-        var marker = L.marker(new L.LatLng(req.d[key].latitude, req.d[key].longitude), { icon: req.markers[store_type], title: req.d[key].name });
-        req.d[key].directionLink = 'http://mapq.st/directions?q1=' + req.d[key].address + '%20' + req.d[key].locationLabel + '%20(' + req.d[key].name + ')&maptype=map';
-        marker.bindPopup('<strong>' + req.d[key].name + '</strong><br>' + req.d[key].address + '<br>' + req.d[key].phone + '<br>' + req.d[key].hours + '<br><a href="?store=' + req.d[key].slug + '">Details</a>, <a href="' + req.d[key].directionLink + '">get directions</a>');
-        marker.openPopup();
-        req.marker_list[store_type].push(marker);
-        markers.addLayer(marker);
-*/
+    $.each(data, function(count, record) { 
+        console.log(record); 
+        if ( record['Latitude'] !== '' )
+        {
+            var marker = L.marker(new L.LatLng(record['Latitude'], record['Longitude']), { title: "HI" }).addTo(m.map);
+            marker.bindPopup('<strong>' + record['Name of deceased'] + '</strong><br>');
+            //marker.openPopup();
+        }
+    });
+});
 </script>
 
 </body>
