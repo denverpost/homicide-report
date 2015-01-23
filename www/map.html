@@ -7,8 +7,29 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <meta http-equiv="Content-Language" content="en-us">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+
 </head>
 <body>
 
 </body>
+    <script>
+    // Javascript for managing the example page.
+    // Edit the page:
+    var city = 'el-paso';
+    function update_iframe(id, new_city)
+    {
+        document.getElementById(id).src = document.getElementById(id).src.replace(city, new_city);
+        document.getElementById('list-city').innerHTML = new_city;
+        city = new_city;
+    }
+
+    // Allow bookmarkable cities on this page
+    if ( document.location.hash !== '' )
+    {
+        var city = document.location.hash.substring(1);
+        update_iframe('homicide-list', city);
+    }
+    </script>
 </html>
