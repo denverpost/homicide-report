@@ -67,7 +67,7 @@
 // Javascript for managing the example page.
 // Edit the page:
 var city = 'el-paso';
-function update_iframe(id, new_city)
+function update_iframe(new_city)
 {
     document.getElementById('homicide-list').src = document.getElementById('homicide-list').src.replace("city=" + city, "city=" +new_city);
     document.getElementById('homicide-map').src = document.getElementById('homicide-map').src.replace("city=" + city, "city=" + new_city);
@@ -81,9 +81,8 @@ function init()
 {
     if ( document.location.hash !== '' )
     {
-        var city = document.location.hash.substring(1);
-        update_iframe('homicide-list', city);
-        update_iframe('homicide-map', city);
+        window.city = document.location.hash.substring(1);
+        update_iframe(window.city);
     }
 }
 </script>
