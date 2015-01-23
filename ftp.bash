@@ -17,6 +17,9 @@ if [ -z "$FTP_PASS" ]; then FTP_PASS=`cat ~/.ftp_pass`; fi
 FILES='*'
 while [ "$1" != "" ]; do
     case $1 in
+        -s | --source_dir ) shift
+            SOURCE_DIR=$1
+            ;;
         -d | --dir ) shift
             DIR=$1
             ;;

@@ -1,7 +1,9 @@
 #!/bin/bash
 # Publish these files.
 # Assumes a virtualenv named HOMICIDE, as well as virtualenvwrapper.
-# pip insall virtualenv; pip install virtualenvwrapper
+# pip install virtualenv; pip install virtualenvwrapper
+# Also assumes env vars REMOTE_DIR and REMOTE_HOST:
+# export REMOTE_DIR='path/on/remote/server/to/publish'; export REMOTE_HOST='ftp.servername.com'
 
 workon HOMICIDE
 CURRENT_YEAR=2015
@@ -31,4 +33,7 @@ for YEAR in 2014 2015; do
     python spreadsheet.py Year=$YEAR
 done
 
-./ftp.bash --dir $REMOTE_DIR --host $REMOTE_HOST
+# FTP the data files
+./ftp.bash --dir $REMOTE_DIR/output --host $REMOTE_HOST
+# FTP the static files (should only update them when necessary.)
+./ftp.bash --dir $REMOTE_DIR --source_dir www --host $REMOTE_HOST
