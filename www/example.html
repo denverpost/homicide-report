@@ -22,12 +22,28 @@
         line-height: .75;
     }
     </style>
+    <script>
+    // Javascript for managing the example page.
+    var city = 'el-paso';
+    function update_iframe(id, new_city)
+    {
+        document.getElementById(id).src = document.getElementById(id).src.replace(city, new_city);
+        city = new_city;
+    }
+    </script>
 </head>
 <body>
 
 <h1>Homicide Report Example Usage</h1>
 
 <h2>Publish a list of homicides:</h2>
+<p>Change the city below: 
+    <a href="#el-paso" onClick="update_iframe('homicide-list', 'el-paso');">El Paso</a>,
+    <a href="#denver" onClick="update_iframe('homicide-list', 'denver');">Denver</a>,
+    <a href="#nashville" onClick="update_iframe('homicide-list', 'nashville');">Nashville</a>,
+    <a href="#louisville" onClick="update_iframe('homicide-list', 'louisville');">Louisville</a>,
+    <a href="#portland" onClick="update_iframe('homicide-list', 'portland');">Portland</a>
+</p>
 <iframe id="homicide-list" class="homicides" src="list.html?city=el-paso" frameborder="0" allowfullscreen scrolling="no" seamless></iframe>
 <h3>Markup used to publish this list:</h3>
 <p>Note: Change the "city" value to your city. Replace spaces with hyphens.</p>
