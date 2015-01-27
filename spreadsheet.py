@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Turn the spreadsheet into a flatfile.
+# Class for common Google sheet operations.
 import os
 import sys
 import json
@@ -120,27 +120,8 @@ class Sheet:
                 recordwriter.writerow(keys)
                 continue
             record = OrderedDict(zip(keys, row))
-
-            publish = True
-            if self.filters:
-                for item in self.filters:
-                    # Special handling for filtering by years. Hard-coded.
-                    if item['key'] == 'Year':
-                        if item['value'] not in record['Date of homicide']:
-                            publish = False
-                    elif record[item['key']] != item['value']:
-                        publish = False
-
-            if publish:
-                if self.options and self.options.geocode:
-                    if record['Latitude'] == '' or record['Longitude'] == '':
-                        geo = Geocode('%s, %s' % (record['Address of homicide'], record['City']))
-                        latlng = geo.get()
-                        record['Latitude'] = latlng.split(',')[0]
-                        record['Longitude'] = latlng.split(',')[1]
-                        # *** Still need to write these values back to the spreadsheet
-                recordwriter.writerow(row)
-                records += [record]
+            recordwriter.writerow(row)
+            records += [record]
 
         if records:
             json.dump(records, fn['json'])
