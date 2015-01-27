@@ -9,5 +9,6 @@ def test_publish():
     """ Test the Sheet's publish method.
         """
     sheet = Sheet('test-sheet', 'worksheet-name')
-    publish_value = sheet.publish()
+    homicide = Homicide(sheet)
+    publish_value = homicide.publish()
     assert publish_value == True

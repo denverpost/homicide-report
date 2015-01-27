@@ -35,15 +35,15 @@ class Homicide:
             self.sheet.sheet = self.open_worksheet(worksheet)
 
         if not worksheet:
-            worksheet = self.worksheet
+            worksheet = self.sheet.worksheet
 
-        self.build_filename()
+        self.sheet.build_filename()
 
         rows = self.sheet.sheet.get_all_values()
         keys = rows[0]
         fn = {
-            'json': open('%s/output/%s.json' % (self.directory, self.filename), 'wb'),
-            'csv': open('%s/output/%s.csv' % (self.directory, self.filename), 'wb')
+            'json': open('%s/output/%s.json' % (self.sheet.directory, self.sheet.filename), 'wb'),
+            'csv': open('%s/output/%s.csv' % (self.sheet.directory, self.sheet.filename), 'wb')
         }
         recordwriter = csv.writer(
             fn['csv'], delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
@@ -66,7 +66,7 @@ class Homicide:
                         publish = False
 
             if publish:
-                if self.options and self.options.geocode:
+                if self.sheet.options and self.sheet.options.geocode:
                     if record['Latitude'] == '' or record['Longitude'] == '':
                         geo = Geocode('%s, %s' % (record['Address of homicide'], record['City']))
                         latlng = geo.get()
