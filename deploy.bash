@@ -9,7 +9,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 workon HOMICIDE
 CURRENT_YEAR=2015
 
-for CITY in Denver "El Paso" Louisville Portland Nashville; do
+for CITY in Denver "El Paso" Louisville Portland "Portland Metro" Nashville; do
     # Prep the variables
     echo $CITY
 
