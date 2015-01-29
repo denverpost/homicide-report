@@ -7,21 +7,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Language" content="en-us">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <!-- <link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/projects/2015/datatables/media/css/jquery.dataTables.css">
-    <link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/projects/2015/datatables/examples/resources/syntax/shCore.css">
-    <link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/projects/2015/datatables/examples/resources/demo.css">
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/responsive/1.0.3/css/dataTables.responsive.css">
-    <style type="text/css" class="init">
-
-    </style>
-    <script type="text/javascript" src="http://extras.denverpost.com/projects/2015/datatables/media/js/jquery.js"></script>
-    <script type="text/javascript" src="http://extras.denverpost.com/projects/2015/datatables/media/js/jquery.dataTables.js"></script>
-    <script type="text/javascript" src="//cdn.datatables.net/responsive/1.0.3/js/dataTables.responsive.js">
-    <script type="text/javascript" src="http://extras.denverpost.com/projects/2015/datatables/examples/resources/syntax/shCore.js"></script>
-    <script type="text/javascript" src="http://extras.denverpost.com/projects/2015/datatables/examples/resources/demo.js"></script>
-    <script type="text/javascript" class="init"> -->
-
-    <!-- for footables -->
     <link href="http://extras.denverpost.com/projects/2015/salary-tables/css/footable.core.css?v=2-0-1" rel="stylesheet" type="text/css"/>
     <link href="http://extras.denverpost.com/projects/2015/salary-tables/demos/css/footable-demos.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="http://extras.denverpost.com/foundation/css/foundation.css" />
@@ -38,55 +23,10 @@
     <script src="http://extras.denverpost.com/projects/2015/salary-tables/js/footable.paginate.js?v=2-0-1" type="text/javascript"></script>
 </head>
 
-<!-- $(document).ready(function() {
-
-    // Parse out the city and the year query arguments
-    var homicides = {
-        city: '',
-        year: '',
-        filename: 'responses'
-    };
-    if ( document.location.search !== '' )
-    {
-        var query_string = document.location.search.substring(1);
-        var keyvalues = query_string.split('&');
-        var keyvalues_length = keyvalues.length;
-        for ( i = 0; i < keyvalues_length; i ++ )
-        {
-            var keyvalue = keyvalues[i].split('=');
-            if ( keyvalue[0].toLowerCase() === 'city' ) homicides.city = keyvalue[1];
-            if ( keyvalue[0].toLowerCase() === 'year' ) homicides.year = keyvalue[1];
-        }
-    }
-    if ( homicides.city !== '' ) homicides.filename += '-' + homicides.city;
-    if ( homicides.year !== '' ) homicides.filename += homicides.year;
-
-    $('#homicides').dataTable( {
-        "responsive": true,
-        "ajax": {
-            "url": 'output/' + homicides.filename + '.json',
-            "dataSrc": ""
-        },
-        "columns": [
-            { "data": "Name of deceased"},
-            { "data": "Date of homicide"},
-            { "data": "Time of homicide"},
-            { "data": "Neighborhood"},
-            { "data": "Age"},
-            { "data": "Gender"},
-            { "data": "Cause of death"},
-            { "data": "Article URL"}
-        ]
-    } );
-} );
-
-    </script>
-</head>
-
 <body class="dt">
     <div class="container">
         <section>
-
+<!-- 
             <table id="homicides" class="display responsive" cellspacing="0" width="100%">
                 <thead>
                     <tr>
@@ -118,8 +58,8 @@
     </section>
 </div>
 
-<div> -->
-<body>
+<div>
+<body> -->
     <p>
             Search database: <input id="filter" type="text"/>
             <!-- Sort via dropdown - not working yet
