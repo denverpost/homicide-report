@@ -4,10 +4,10 @@
     <title>Homicides - Homicide Report</title>
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
     <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Language" content="en-us">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/projects/2015/datatables/media/css/jquery.dataTables.css">
+    <!-- <link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/projects/2015/datatables/media/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/projects/2015/datatables/examples/resources/syntax/shCore.css">
     <link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/projects/2015/datatables/examples/resources/demo.css">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/responsive/1.0.3/css/dataTables.responsive.css">
@@ -19,9 +19,26 @@
     <script type="text/javascript" src="//cdn.datatables.net/responsive/1.0.3/js/dataTables.responsive.js">
     <script type="text/javascript" src="http://extras.denverpost.com/projects/2015/datatables/examples/resources/syntax/shCore.js"></script>
     <script type="text/javascript" src="http://extras.denverpost.com/projects/2015/datatables/examples/resources/demo.js"></script>
-    <script type="text/javascript" class="init">
+    <script type="text/javascript" class="init"> -->
 
-$(document).ready(function() {
+    <!-- for footables -->
+    <link href="http://extras.denverpost.com/projects/2015/salary-tables/css/footable.core.css?v=2-0-1" rel="stylesheet" type="text/css"/>
+    <link href="http://extras.denverpost.com/projects/2015/salary-tables/demos/css/footable-demos.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="http://extras.denverpost.com/foundation/css/foundation.css" />
+    <link rel="stylesheet" href="http://extras.denverpost.com/foundation/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/weather-closures/weather-closures-styles.css" />
+    <script src="http://extras.denverpost.com/foundation/js/vendor/modernizr.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script>
+        if (!window.jQuery) { document.write('<script src="http://extras.denverpost.com/projects/2015/salary-tables/demos/js/jquery-1.9.1.min.js"><\/script>'); }
+    </script>
+    <script src=" http://extras.denverpost.com/projects/2015/salary-tables/js/footable.js?v=2-0-1" type="text/javascript"></script>
+    <script src="http://extras.denverpost.com/projects/2015/salary-tables/js/footable.sort.js?v=2-0-1" type="text/javascript"></script>
+    <script src="http://extras.denverpost.com/projects/2015/salary-tables/js/footable.filter.js?v=2-0-1" type="text/javascript"></script>
+    <script src="http://extras.denverpost.com/projects/2015/salary-tables/js/footable.paginate.js?v=2-0-1" type="text/javascript"></script>
+</head>
+
+<!-- $(document).ready(function() {
 
     // Parse out the city and the year query arguments
     var homicides = {
@@ -100,5 +117,93 @@ $(document).ready(function() {
         
     </section>
 </div>
+
+<div> -->
+<body>
+    <p>
+            Search database: <input id="filter" type="text"/>
+            <!-- Sort via dropdown - not working yet
+            ID: <select class="filter-id">
+                <option></option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            <a href="#clear" class="clear-filter" title="clear filter">[clear]</a> -->
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 columns">
+            <table id="seller-table" class="table" data-filter="#filter" data-page-size="30">
+                <thead>
+                    <tr>
+                        <th data-toggle="true">Name of deceased</th>
+                        <th>Date of homicide</th>
+                        <th data-hide="phone">Time</th>
+                        <th data-hide="phone">Neighborhood</th>
+                        <th data-hide="phone">Age</th>
+                        <th data-hide="phone">Gender</th>
+                        <th data-hide="all">Cause</th>
+                        <th data-hide="all">Article</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+            
+    </div>
+    </div>
+
+   
+    
+    <script type="text/javascript">
+        $('table').footable();
+
+
+        $.getJSON( "output/responses.json", function(data) {
+            $.each(data, function(index, item){
+                var row = '<tr><td>' + '<a href="' + item['Article URL'] + '" target="_parent">' + item['Name of deceased'] + '</a></td><td>' + item.date + '</td><td>' + item.time + '</td><td>' + item.neighborhood + '</td><td>' + item.age + '</td><td>' + item.gender + '</td><td>' + item.cause + '</td><td>' + '<a href="' + item.url + '">' + item.url + '</a>' + '</td></tr>';
+                $('table tbody').append(row);
+            });
+        });
+        $('table').trigger('footable_initialize');
+        $(function () {
+
+            $('table').footable();
+
+            $('.clear-filter').click(function (e) {
+                e.preventDefault();
+                $('table.demo').trigger('footable_clear_filter');
+                $('.filter-id').val('');
+            });
+
+            $('.filter-id').change(function (e) {
+                e.preventDefault();
+                var filter = $(this).val();
+                $('#filter').val('');
+                $('table.demo').trigger('footable_filter', {filter: filter});
+            });
+
+            $('.get_data').click(function() {
+                $.ajax({
+                    url : './output/responses.json',
+                    success : function(data) {
+                        $('table tbody').append(data);
+                        $('table').trigger('footable_redraw');
+                    }
+                });
+            });
+        });
+    </script>
+        
+    <script src="http://extras.denverpost.com/foundation/js/vendor/jquery.js"></script>
+    <script src="http://extras.denverpost.com/foundation/js/foundation.min.js"></script>
+  
+    <script>
+        $(document).foundation();
+    </script>
+    
 </body>
 </html>
