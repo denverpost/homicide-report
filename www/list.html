@@ -23,58 +23,24 @@
     <script src="http://extras.denverpost.com/projects/2015/salary-tables/js/footable.paginate.js?v=2-0-1" type="text/javascript"></script>
 </head>
 
-<body class="dt">
-    <div class="container">
-        <section>
-<!-- 
-            <table id="homicides" class="display responsive" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>Name of deceased</th>
-                        <th>Date of homicide</th>
-                        <th>Time</th>
-                        <th>Neighborhood</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>Cause</th>
-                        <th>Link</th>
-                    </tr>
-                </thead>
-
-                <tfoot>
-                    <tr>
-                        <th>Name of deceased</th>
-                        <th>Date of homicide</th>
-                        <th>Time</th>
-                        <th>Neighborhood</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>Cause</th>
-                        <th>Link</th>
-                    </tr>
-                </tfoot>
-            </table>
-        
-    </section>
-</div>
-
-<div>
-<body> -->
-    <p>
-            Search database: <input id="filter" type="text"/>
-            <!-- Sort via dropdown - not working yet
-            ID: <select class="filter-id">
-                <option></option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-            </select>
-            <a href="#clear" class="clear-filter" title="clear filter">[clear]</a> -->
-        </p>
+<body>
+    <div class="row">
+        <div class="small-12 columns">
+            <p>
+                Search database: <input id="filter" type="text"/>
+                <!-- Sort via dropdown - not working yet
+                ID: <select class="filter-id">
+                    <option></option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <a href="#clear" class="clear-filter" title="clear filter">[clear]</a> -->
+            </p>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="small-12 columns">
+    <div class="row">
+        <div class="small-12 columns">
             <table id="seller-table" class="table" data-filter="#filter" data-page-size="30">
                 <thead>
                     <tr>
@@ -92,10 +58,8 @@
                 </tbody>
             </table>
             
-    </div>
-    </div>
-
-   
+        </div>
+    </div>   
     
     <script type="text/javascript">
         $('table').footable();
