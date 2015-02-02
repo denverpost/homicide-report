@@ -24,6 +24,29 @@
 </head>
 
 <body>
+<script>
+
+    // Parse out the city and the year query arguments
+    var homicides = {
+        city: '',
+        year: '',
+        filename: 'responses'
+    };
+    if ( document.location.search !== '' )
+    {
+        var query_string = document.location.search.substring(1);
+        var keyvalues = query_string.split('&');
+        var keyvalues_length = keyvalues.length;
+        for ( i = 0; i < keyvalues_length; i ++ )
+        {
+            var keyvalue = keyvalues[i].split('=');
+            if ( keyvalue[0].toLowerCase() === 'city' ) homicides.city = keyvalue[1];
+            if ( keyvalue[0].toLowerCase() === 'year' ) homicides.year = keyvalue[1];
+        }
+    }
+    if ( homicides.city !== '' ) homicides.filename += '-' + homicides.city;
+    if ( homicides.year !== '' ) homicides.filename += homicides.year;
+</script>
     <div class="row">
         <div class="small-12 columns">
             <p>
@@ -65,7 +88,7 @@
         $('table').footable();
 
 
-        $.getJSON( "output/responses.json", function(data) {
+        $.getJSON( "output/" + homicides.filename + ".json", function(data) {
             $.each(data, function(index, item){
                 var row = '<tr><td>' + '<a href="' + item['Article URL'] + '" target="_parent">' + item['Name of deceased'] + '</a></td><td>' + item['Date of homicide'] + '</td><td>' + item['Time of homicide'] + '</td><td>' + item['Neighborhood'] + '</td><td>' + item['Age'] + '</td><td>' + item['Gender'] + '</td><td>' + item['Cause of death'] + '</td></tr>';
                 $('table tbody').append(row);
