@@ -33,7 +33,7 @@ var barChartData = {}
     // Parse out the city and the year query arguments
     var homicides = {
         city: '',
-        year: '',
+        year: '2015',
         filename: 'responses'
     };
     if ( document.location.search !== '' )
@@ -49,7 +49,7 @@ var barChartData = {}
         }
     }
     //if ( homicides.city !== '' ) homicides.filename += '-' + homicides.city;
-    //if ( homicides.year !== '' ) homicides.filename += homicides.year;
+    if ( homicides.year !== '' ) homicides.filename += '-' + homicides.year;
 
     var cities = {
         'Denver': { population: 649495, count: 0, percapita: 0.0 },
