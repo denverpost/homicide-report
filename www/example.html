@@ -63,6 +63,20 @@
 
 
 
+<h2 id="compare-example">Publish a comparison of city homicide rates:</h2>
+<iframe id="homicide-compare" class="homicides" src="compare.html?year=2015" frameborder="0" allowfullscreen scrolling="no" seamless></iframe>
+<h3>Markup used to publish this:</h3>
+<pre class="code">
+    &lt;script src="http://extras.denverpost.com/app/homicide-report/application.js">&lt;/script><br>
+    &lt;iframe src="http://extras.denverpost.com/app/homicide-report/compare.html?year=2015" frameborder="0" allowfullscreen scrolling="no" seamless>&lt;/iframe><br>
+    &lt;style type="text/css"><br>
+    iframe.homicides { width: 100%; height: 400px; }<br>
+    &lt;/style>
+</pre>
+
+
+
+
 <script>
 // Javascript for managing the example page.
 // Edit the page:
