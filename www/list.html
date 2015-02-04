@@ -14,13 +14,6 @@
     <link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/weather-closures/weather-closures-styles.css" />
     <script src="http://extras.denverpost.com/foundation/js/vendor/modernizr.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-    <script>
-        if (!window.jQuery) { document.write('<script src="http://extras.denverpost.com/projects/2015/salary-tables/demos/js/jquery-1.9.1.min.js"><\/script>'); }
-    </script>
-    <script src=" http://extras.denverpost.com/projects/2015/salary-tables/js/footable.js?v=2-0-1" type="text/javascript"></script>
-    <script src="http://extras.denverpost.com/projects/2015/salary-tables/js/footable.sort.js?v=2-0-1" type="text/javascript"></script>
-    <script src="http://extras.denverpost.com/projects/2015/salary-tables/js/footable.filter.js?v=2-0-1" type="text/javascript"></script>
-    <script src="http://extras.denverpost.com/projects/2015/salary-tables/js/footable.paginate.js?v=2-0-1" type="text/javascript"></script>
 </head>
 
 <body>
@@ -84,10 +77,10 @@
     </div>   
     
     <script type="text/javascript">
-        var the_table = $('table');
-        $('table').remove();
+    $(document).ready( function(){
+        $('table').footable();
+          
         $.getJSON( "output/" + homicides.filename + ".json", function(data) {
-            $('#table-wrapper').append(the_table);
             $.each(data, function(index, item){
                 // Data cleanup
                 if ( item['Name of deceased'] === '' ) item['Name of deceased'] = 'Name not available';
@@ -101,36 +94,12 @@
                 <td>' + item['Age'] + '</td>\n\
                 <td>' + item['Gender'] + '</td>\n\
                 <td>' + item['Cause of death'] + '</td></tr>';
-                $('table tbody').append(row);
+                $('table tbody').append(row).trigger('footable_redraw');
             });
        
 
-     });
-         $('table').footable();
-
-            $('table').trigger('footable_initialize');
-            $('table').trigger('footable_resize');
-
-        $(function () {
-
-        /*    $('.clear-filter').click(function (e) {
-                e.preventDefault();
-                $('table.demo').trigger('footable_clear_filter');
-                $('.filter-id').val('');
-            });
-
-            $('.filter-id').change(function (e) {
-                e.preventDefault();
-                var filter = $(this).val();
-                $('#filter').val('');
-                $('table.demo').trigger('footable_filter', {filter: filter});
-            }); */
-
-           
-        });   
-        $(window).load( function(){
-          
-        });     
+        });
+    });     
     </script>
         
     <script src="http://extras.denverpost.com/foundation/js/vendor/jquery.js"></script>
@@ -140,5 +109,9 @@
         $(document).foundation();
     </script>
     
+    <script src=" http://extras.denverpost.com/projects/2015/salary-tables/js/footable.js?v=2-0-1" type="text/javascript"></script>
+    <script src="http://extras.denverpost.com/projects/2015/salary-tables/js/footable.sort.js?v=2-0-1" type="text/javascript"></script>
+    <script src="http://extras.denverpost.com/projects/2015/salary-tables/js/footable.filter.js?v=2-0-1" type="text/javascript"></script>
+    <script src="http://extras.denverpost.com/projects/2015/salary-tables/js/footable.paginate.js?v=2-0-1" type="text/javascript"></script>
 </body>
 </html>
