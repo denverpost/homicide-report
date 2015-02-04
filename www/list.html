@@ -63,7 +63,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="small-12 columns">
+        <div class="small-12 columns" id="table-wrapper">
             <table id="seller-table" class="table" data-filter="#filter" data-page-size="30">
                 <thead>
                     <tr>
@@ -77,7 +77,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
                 </tbody>
             </table>
             
@@ -85,24 +84,36 @@
     </div>   
     
     <script type="text/javascript">
-        $('table').footable();
-
-
+        var the_table = $('table');
+        $('table').remove();
         $.getJSON( "output/" + homicides.filename + ".json", function(data) {
+            $('#table-wrapper').append(the_table);
             $.each(data, function(index, item){
                 // Data cleanup
                 if ( item['Name of deceased'] === '' ) item['Name of deceased'] = 'Name not available';
                 var name_field = '<a href="' + item['Article URL'] + '" target="_parent">' + item['Name of deceased'] + '</a>';
                 if ( item['Article URL'] === '' ) name_field = item['Name of deceased'];
 
-                var row = '<tr><td>' + name_field + '</td><td>' + item['Date of homicide'] + '</td><td>' + item['Time of homicide'] + '</td><td>' + item['Neighborhood'] + '</td><td>' + item['Age'] + '</td><td>' + item['Gender'] + '</td><td>' + item['Cause of death'] + '</td></tr>';
+                var row = '<tr><td>' + name_field + '</td>\n\
+                <td>' + item['Date of homicide'] + '</td>\n\
+                <td>' + item['Time of homicide'] + '</td>\n\
+                <td>' + item['Neighborhood'] + '</td>\n\
+                <td>' + item['Age'] + '</td>\n\
+                <td>' + item['Gender'] + '</td>\n\
+                <td>' + item['Cause of death'] + '</td></tr>';
                 $('table tbody').append(row);
             });
-        });
-        $('table').trigger('footable_initialize');
+       
+
+     });
+         $('table').footable();
+
+            $('table').trigger('footable_initialize');
+            $('table').trigger('footable_resize');
+
         $(function () {
 
-            $('.clear-filter').click(function (e) {
+        /*    $('.clear-filter').click(function (e) {
                 e.preventDefault();
                 $('table.demo').trigger('footable_clear_filter');
                 $('.filter-id').val('');
@@ -113,19 +124,13 @@
                 var filter = $(this).val();
                 $('#filter').val('');
                 $('table.demo').trigger('footable_filter', {filter: filter});
-            });
+            }); */
 
-            $('.get_data').click(function() {
-                $.ajax({
-                    url : './output/responses.json',
-                    success : function(data) {
-                        $('table tbody').append(data);
-                        $('table').trigger('footable_redraw');
-                    }
-                });
-            });
-        });
-        $('table').trigger('footable_redraw');
+           
+        });   
+        $(window).load( function(){
+          
+        });     
     </script>
         
     <script src="http://extras.denverpost.com/foundation/js/vendor/jquery.js"></script>
