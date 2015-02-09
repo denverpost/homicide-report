@@ -70,8 +70,12 @@ $.getJSON( "output/" + homicides.filename + ".json", function(data) {
         {
             var marker = L.marker(new L.LatLng(record['Latitude'], record['Longitude']), {}).addTo(m.map);
             var article_link = '';
+
+            var address = '';
+            if ( record['Address of homicide'] !== '' ) address = record['Address of homicide'] + ', ';
+
             if ( record['Article URL'] !== '' ) article_link = '<a href="' + record['Article URL'] + '" target="_parent">Read the article</a>';
-            marker.bindPopup('<strong>' + record['Name of deceased'] + '</strong><br>' + record['Address of homicide'] + ', ' + record['Date of homicide'] + '<br>' + article_link);
+            marker.bindPopup('<strong>' + record['Name of deceased'] + '</strong><br>' + address + record['Date of homicide'] + '<br>' + article_link);
         }
     });
 });
