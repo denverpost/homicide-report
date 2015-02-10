@@ -1,0 +1,70 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Denver Post | Homicide Report</title>
+    <link rel="stylesheet" href="http://extras.denverpost.com/foundation/css/foundation.css" />
+    <link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/weather-closures/weather-closures-styles.css" />
+    <script src="http://extras.denverpost.com/foundation/js/vendor/modernizr.js"></script>
+    <script src="http://extras.denverpost.com/app/homicide-report/application.js"></script>
+    <style type="text/css">
+    iframe.homicides { width: 100%; height: 500px; }
+    .homicide-map { margin-top: -7em; }
+    </style>
+  </head>
+
+  <body>
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+        <h1 id="logo"><a href="http://www.denverpost.com/" target="_top">The Denver Post</a></h1>
+        </li>
+      </ul>
+    </nav>
+    <div class="row">
+      <div class="small-12 columns">
+        <h2>Denver Homicide Report</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <div id="homicide-report-container">
+          <p>This page will track homicides that occur in the City and County of Denver.</p>
+          <p>Information is collected from news reports, the coroner at Denver's Office of the Medical Examiner and the Denver Police Department. Initial information may be incomplete and will be udpated as it becomes available.</p>
+          <p>If two homicides occured at the same address the map markers will overlap.</p>  
+          <h3 id="homicide-list">Denver Homicides, 2015</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="homicide-table">
+            <iframe src="http://extras.denverpost.com/app/homicide-report/list.html?city=denver" frameborder="0" allowfullscreen scrolling="no" seamless id="homicide-list" class="homicides"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="homicide-map">
+            <iframe src="http://extras.denverpost.com/app/homicide-report/map.html?city=denver" frameborder="0" allowfullscreen scrolling="no" seamless id="homicide-map" class="homicides"></iframe>            
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="footer-info">
+            <p>Anyone with information on these homicides is asked to call police at 720-913-7867.</p>
+          </div>
+        </div>
+      </div>    
+    </div> <!-- close homicide-report-container -->
+
+    <script src="http://extras.denverpost.com/foundation/js/vendor/jquery.js"></script>
+    <script src="http://extras.denverpost.com/foundation/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
