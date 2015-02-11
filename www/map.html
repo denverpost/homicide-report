@@ -67,20 +67,22 @@ var m = {
 
         if ( typeof record_next !== 'undefined' )
         {
-            name += ' and ' + record_next['Name of deceased'];
+            name += ' </strong>and<strong> ' + record_next['Name of deceased'];
         }
 
         if ( record['Address of homicide'] !== '' ) address = record['Address of homicide'] + ', ';
         if ( record['Article URL'] !== '' ) article_link = '<a href="' + record['Article URL'] + '" target="_parent">Read the article</a>';
 
         return '<strong>' + name + '</strong><br>' + address + record['Date of homicide'] + '<br>' + article_link;
+    },
+    init: function() {
+        L.tileLayer(this.tile, {
+            attribution: this.attribution,
+            maxZoom: 16
+        }).addTo(this.map);
     }
 }
-
-L.tileLayer(m.tile, {
-    attribution: m.attribution,
-    maxZoom: 16
-}).addTo(m.map);
+m.init();
 
 // Get the markers on the map
 $.getJSON( "output/" + homicides.filename + ".json", function(data) {
