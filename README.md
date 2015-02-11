@@ -1,5 +1,6 @@
 # Homicide Report
 ![Homicide Report Tests](https://api.travis-ci.org/denverpost/homicide-report.png)
+The Homicide Report code takes a google spreadsheet and filters it into various CSVs, JSONs and JSONPs, which are then FTP'd to a production server. It also has rudimentary publishing tools for a homicide list and homicide map.
 
 # Project Setup
 The back-end, spreadsheet-publishing portion assumes these environment variables:
