@@ -3,6 +3,7 @@
 # Assumes a virtualenv named HOMICIDE, as well as virtualenvwrapper.
 # pip install virtualenv; pip install virtualenvwrapper
 
+source source.bash # If it exists
 source /usr/local/bin/virtualenvwrapper.sh
 workon HOMICIDE
 CURRENT_YEAR=2015
