@@ -57,7 +57,26 @@ var m = {
     markers: {},
     tile: 'http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg',
     attribution: '<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, tiles courtesy of <a href="http://www.mapquest.com/">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png" scale="0">',
+    add_marker: function(lat, lon) {
+        return L.marker(new L.LatLng(lat, lon), {}).addTo(this.map);
+    },
+    build_marker_text: function(record, record_next) {
+        var article_link = '';
+        var address = '';
+        var name = record['Name of deceased'];
+
+        if ( typeof record_next !== 'undefined' )
+        {
+            name += ' and ' + record_next['Name of deceased'];
+        }
+
+        if ( record['Address of homicide'] !== '' ) address = record['Address of homicide'] + ', ';
+        if ( record['Article URL'] !== '' ) article_link = '<a href="' + record['Article URL'] + '" target="_parent">Read the article</a>';
+
+        return '<strong>' + name + '</strong><br>' + address + record['Date of homicide'] + '<br>' + article_link;
+    }
 }
+
 L.tileLayer(m.tile, {
     attribution: m.attribution,
     maxZoom: 16
@@ -65,19 +84,47 @@ L.tileLayer(m.tile, {
 
 // Get the markers on the map
 $.getJSON( "output/" + homicides.filename + ".json", function(data) {
+
+    var records = [];   // For indexing non-multiple homicides
+    var multiples = []; // For indexing multiple homicides
+
     $.each(data, function(count, record) { 
+
+        // Collate the data into an object we can iterate through ***and search***
+        if ( record['Multiple homicide?'] === 'Yes' )
+        {
+            multiples.push(record);
+        }
+        else
+        {
+            records.push(record);
+        }
+
+    });
+
+    // We separate multiples because we publish them differently.
+    var len = records.length;
+    for ( var i = 0; i < len; i++ )
+    {
+        var record = records[i];
         if ( record['Latitude'] !== '' )
         {
-            var marker = L.marker(new L.LatLng(record['Latitude'], record['Longitude']), {}).addTo(m.map);
-            var article_link = '';
-
-            var address = '';
-            if ( record['Address of homicide'] !== '' ) address = record['Address of homicide'] + ', ';
-
-            if ( record['Article URL'] !== '' ) article_link = '<a href="' + record['Article URL'] + '" target="_parent">Read the article</a>';
-            marker.bindPopup('<strong>' + record['Name of deceased'] + '</strong><br>' + address + record['Date of homicide'] + '<br>' + article_link);
+            var marker = m.add_marker(record['Latitude'], record['Longitude']);
+            marker.bindPopup(m.build_marker_text(record));
         }
-    });
+    }
+    var len = multiples.length;
+    for ( var i = 0; i < len; i+=2 )
+    {
+        var record = multiples[i];
+        var record_next = multiples[i + 1];
+        if ( record['Latitude'] !== '' )
+        {
+            var marker = m.add_marker(record['Latitude'], record['Longitude']);
+            marker.bindPopup(m.build_marker_text(record, record_next));
+        }
+    }
+
 });
 </script>
 
