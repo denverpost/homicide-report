@@ -86,6 +86,7 @@
                 if ( item['Name of deceased'] === '' ) item['Name of deceased'] = 'Name not available';
                 var name_field = '<a href="' + item['Article URL'] + '" target="_parent">' + item['Name of deceased'] + '</a>';
                 if ( item['Article URL'] === '' ) name_field = item['Name of deceased'];
+                if ( item['Obituary URL'] !== '' ) name_field += ' (<a href="' + item['Obituary URL'] + '">obituary</a>)';
 
                 var row = '<tr><td>' + name_field + '</td>\n\
                 <td>' + item['Date of homicide'] + '</td>\n\
