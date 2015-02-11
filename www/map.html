@@ -69,7 +69,7 @@ var m = {
         {
             name += ' </strong>and<strong> ' + record_next['Name of deceased'];
         }
-        if ( record['Obituary URL'] !== '' ) name += ' (<a href="' + item['Obituary URL'] + '">obituary</a>)';
+        if ( record['Obituary URL'] !== '' ) name += ' (<a href="' + record['Obituary URL'] + '">obituary</a>)';
 
         if ( record['Address of homicide'] !== '' ) address = record['Address of homicide'] + ', ';
         if ( record['Article URL'] !== '' ) article_link = '<a href="' + record['Article URL'] + '" target="_parent">Read the article</a>';
