@@ -43,6 +43,7 @@ class Homicide:
         keys = rows[0]
         fn = {
             'json': open('%s/output/%s.json' % (self.sheet.directory, self.sheet.filename), 'wb'),
+            'jsonp': open('%s/output/%s.jsonp' % (self.sheet.directory, self.sheet.filename), 'wb'),
             'csv': open('%s/output/%s.csv' % (self.sheet.directory, self.sheet.filename), 'wb')
         }
         recordwriter = csv.writer(
@@ -78,6 +79,8 @@ class Homicide:
 
         if records:
             json.dump(records, fn['json'])
+            content = json.dumps(records)
+            fn['jsonp'].write('homicide_callback(%s);' % content)
 
         return True
 
