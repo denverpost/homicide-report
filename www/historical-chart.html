@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Line Chart</title>
+		<script src="http://extras.denverpost.com/frameworks/charts/chart.js"></script>
+        <style>
+        .year2010 { height:22px;width:16%;float:left;background-color:rgba(255,69,0,.8);color:white;text-align:center;padding:6px 0px 0px 0px;font-family:helvetica;font-weight:bold; }
+        .year2011 { height:22px;width:16%;float:left;background-color:rgba(0,0,255,.8);color:white;text-align:center;padding:6px 0px 0px 0px;font-family:helvetica;font-weight:bold; }
+        .year2012 { height:22px;width:16%;float:left;background-color:rgba(128,128,128,.8);color:white;text-align:center;padding:6px 0px 0px 0px;font-family:helvetica;font-weight:bold; }
+        .year2013 { height:22px;width:16%;float:left;background-color:rgba(128,0,0,.8);color:white;text-align:center;padding:6px 0px 0px 0px;font-family:helvetica;font-weight:bold; }
+        .year2014 { height:22px;width:16%;float:left;background-color:rgba(0,0,0,.8);color:white;text-align:center;padding:6px 0px 0px 0px;font-family:helvetica;font-weight:bold; }
+        .year2015 { height:22px;width:16%;float:left;background-color:rgba(0,128,0,.8);color:white;text-align:center;padding:6px 0px 0px 0px;font-family:helvetica;font-weight:bold; }
+        .legend { margin: 10px 0px 0px 25px; }
+        .container { width:90%;margin: 5px 0px 5px 10px; }
+        </style>
+	</head>
+	<body>
+		<!-- <div style="transform: rotate(-90deg); float: left; margin: 115px 0px 20px -15px;">Axis test</div> -->
+		<div class="container">
+			<canvas id="canvas" height="400" width="600"></canvas>
+			<div class="legend">
+                <div class="year2010">2010</div>
+                <div class="year2011">2011</div>
+                <div class="year2012">2012</div>
+                <div class="year2013">2013</div>
+                <div class="year2014">2014</div>
+                <div class="year2015">2015</div>
+            </div>
+		</div>
+	<script>
+		var data = {
+    labels: ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    datasets: [
+        {
+            label: "2010",
+            fillColor: "rgba(255,69,0,0.2)",
+            strokeColor: "rgba(255,0,0,1)",
+            pointColor: "rgba(255,0,0,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: [0,2,2,3,3,5,6,9,9,13,18,22,27]
+        },
+        {
+            label: "2011",
+            fillColor: "rgba(0,0,255,0.2)",
+            strokeColor: "rgba(0,0,255,1)",
+            pointColor: "rgba(0,0,255,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [0,3,5,7,11,16,19,20,27,32,33,36,38]
+        },
+        {
+            label: "2012",
+            fillColor: "rgba(128,128,128,0.2)",
+            strokeColor: "rgba(128,128,128,1)",
+            pointColor: "rgba(128,128,128,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [0,1,4,8,11,13,16,17,19,20,25,28,28]
+        },
+        {
+            label: "2013",
+            fillColor: "rgba(128,0,0,0.2)",
+            strokeColor: "rgba(128,0,0,1)",
+            pointColor: "rgba(128,0,0,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [0,4,6,9,14,16,17,21,25,28,32,34,36]
+        },
+        {
+            label: "2014",
+            fillColor: "rgba(0,0,0,0.2)",
+            strokeColor: "rgba(0,0,0,1)",
+            pointColor: "rgba(0,0,0,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [0,2,3,7,8,10,12,15,20,21,24,27,28]
+        },
+        {
+            label: "2015",
+            fillColor: "rgba(0,128,0,0.2)",
+            strokeColor: "rgba(0,128,0,1)",
+            pointColor: "rgba(0,128,0,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [0,5]
+        }
+    ]
+};
+	window.onload = function(){
+		var ctx = document.getElementById("canvas").getContext("2d");
+		window.myLine = new Chart(ctx).Line(data, {
+			// Add chart options below
+            responsive: true,
+            bezierCurve: false,
+            datasetFill: false
+		});
+	}
+
+
+	</script>
+	</body>
+</html>
