@@ -79,7 +79,8 @@ var m = {
     init: function() {
         L.tileLayer(this.tile, {
             attribution: this.attribution,
-            maxZoom: 16
+            maxZoom: 16,
+            zoom: 10
         }).addTo(this.map);
     }
 }

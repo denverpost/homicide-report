@@ -7,7 +7,7 @@ table { width: 100%; }
 .button.expand { margin-bottom: 3px; font-family: Verdana, sans-serif; height: 40px; padding: 10px 0px 0px 0px; }
 .reveal-modal { width: 90vw !important; }
 .reveal-modal>:first-child { margin-top: 20px; }
-iframe.homicides { width: 100%; height: 500px; }
+iframe.homicides { width: 100%; height: 600px; }
 .ho-list { display: inline; }
 .social-icons { height: 50px; width: 50px; }
 ul.no-bullet { margin-top: 15px; }
