@@ -8,6 +8,8 @@
 source /usr/local/bin/virtualenvwrapper.sh
 workon HOMICIDE
 CURRENT_YEAR=2015
+#declare -a CITIES=('Denver' '"El Paso"' 'Louisville' 'Portland' '"Portland Metro"' 'Nashville')
+#declare -a METROS=('Portland')
 
 for CITY in Denver "El Paso" Louisville Portland "Portland Metro" Nashville; do
     # Prep the variables
@@ -26,6 +28,12 @@ for CITY in Denver "El Paso" Louisville Portland "Portland Metro" Nashville; do
     done
 
     ls -lth output/*$slug*
+done
+
+# Merge the json files for metro-area homicides
+for METRO in portland; do
+    cat output/responses-$METRO.json output/responses-$METRO-metro.json | sed 's/\]\[/,/g' > output/responses-$METRO-all.json
+    echo "METRO: $METRO"
 done
 
 # Output the whole year's homicide

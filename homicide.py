@@ -22,6 +22,13 @@ class Homicide:
         """
     def __init__(self, sheet):
         self.sheet = sheet
+        self.is_metro = False
+
+    def set_is_metro(self, value):
+        """ Setter for self.is_metro.
+            """
+        self.is_metro = value
+        return self.is_metro
 
     def publish(self, worksheet=None):
         """ Publish the homicide data in whatever permutations we need.
@@ -56,6 +63,9 @@ class Homicide:
                 continue
             record = OrderedDict(zip(keys, row))
 
+            # We write lines one-by-one. If we have filters, we run
+            # through them here to see if we're handling a record we
+            # shouldn't be writing.
             publish = True
             if self.sheet.filters:
                 for item in self.sheet.filters:
@@ -74,6 +84,8 @@ class Homicide:
                         record['Latitude'] = latlng.split(',')[0]
                         record['Longitude'] = latlng.split(',')[1]
                         # *** Still need to write these values back to the spreadsheet
+                if self.is_metro:
+                    record['is_metro'] = 1
                 recordwriter.writerow(row)
                 records += [record]
 
@@ -88,15 +100,23 @@ def main(options, args):
     """ Take args as key=value pairs, pass them to the add_filter method.
         Example command:
         $ python homicide.py City=Denver
+        or
+        $ python homicide.py City="Portland Metro"
         """
     sheet = Sheet('Homicide Report', 'responses')
     sheet.set_options(options)
+    is_metro = False
     for arg in args:
         if '=' not in arg:
             continue
         k, v = arg.split('=')
+
+        # Metro-specific special case
+        if k.lower() == 'city' and 'etro' in v:
+            is_metro = True
         sheet.add_filter(k, v)
     homicides = Homicide(sheet)
+    homicides.set_is_metro(is_metro)
     homicides.publish()
 
 if __name__ == '__main__':
