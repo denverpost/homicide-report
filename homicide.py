@@ -6,6 +6,7 @@ import json
 import doctest
 import csv
 import codecs, cStringIO
+import datetime, time
 import gspread
 from spreadsheet import Sheet
 from collections import defaultdict
@@ -117,6 +118,15 @@ class Homicide:
                         # *** Still need to write these values back to the spreadsheet
                 if self.is_metro:
                     record['is_metro'] = 1
+
+                # Turn the date into a timestamp.
+                try:
+                    record['unixtime'] = int(time.mktime(
+                                                         datetime.datetime.strptime(record['Date of homicide']),
+                                                         "%m/%d/%Y").timetuple())
+                except:
+                    record['unixtime'] = 0
+                
                 recordwriter.writerow(row)
                 records += [record]
 
