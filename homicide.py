@@ -122,8 +122,8 @@ class Homicide:
                 # Turn the date into a timestamp.
                 try:
                     record['unixtime'] = int(time.mktime(
-                                                         datetime.datetime.strptime(record['Date of homicide']),
-                                                         "%m/%d/%Y").timetuple())
+                                                         datetime.datetime.strptime(record['Date of homicide'],
+                                                         "%m/%d/%Y").timetuple()))
                 except:
                     record['unixtime'] = 0
                 
