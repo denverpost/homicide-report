@@ -21,3 +21,5 @@ ul.no-bullet { margin-top: 15px; }
 .legend { height:22px; width:16%; float:left; color: white; text-align: center; padding: 6px 0px 0px 0px; font-family: Helvetica, sans-serif; font-weight: bold; }
 .legend-container { margin: 10px 0px 0px 25px; }
 #canvas { width: 850px; height: 400px; }
+ul { list-style-type: none; display: inline; float: right; }
+li { float: left; margin-right: 10px; }

@@ -12,12 +12,9 @@
     <link rel="stylesheet" href="http://extras.denverpost.com/foundation/css/foundation.css" />
     <link rel="stylesheet" href="http://extras.denverpost.com/foundation/css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/weather-closures/weather-closures-styles.css" />
+    <link rel="stylesheet" type="text/css" href="homicide-report.css" />
     <script src="http://extras.denverpost.com/foundation/js/vendor/modernizr.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-<style>
-ul { list-style-type: none; display: inline; float: right;}
-li {float: left; margin-right: 10px;}
-</style>
 </head>
 
 <body>
@@ -61,7 +58,7 @@ li {float: left; margin-right: 10px;}
     </div>
     <div class="row">
         <div class="small-12 columns" id="table-wrapper">
-            <table id="seller-table" class="table" data-filter="#filter" data-page-size="20">
+            <table id="seller-table" class="table" data-filter="#filter" data-page-size="5">
                 <thead>
                     <tr>
                         <th data-toggle="true">Name</th>
@@ -78,7 +75,7 @@ li {float: left; margin-right: 10px;}
                 <tfoot>
         <tr>
             <td colspan="7">
-                <div class="pagination pagination-centered hide-if-no-paging"></div>
+                <div class="pagination hide-if-no-paging"></div>
             </td>
         </tr>
     </tfoot>
