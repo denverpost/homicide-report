@@ -14,6 +14,10 @@
     <link rel="stylesheet" type="text/css" href="http://extras.denverpost.com/weather-closures/weather-closures-styles.css" />
     <script src="http://extras.denverpost.com/foundation/js/vendor/modernizr.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+<style>
+ul { list-style-type: none; display: inline; float: right;}
+li {float: left; margin-right: 10px;}
+</style>
 </head>
 
 <body>
@@ -57,7 +61,7 @@
     </div>
     <div class="row">
         <div class="small-12 columns" id="table-wrapper">
-            <table id="seller-table" class="table" data-filter="#filter" data-page-size="30">
+            <table id="seller-table" class="table" data-filter="#filter" data-page-size="20">
                 <thead>
                     <tr>
                         <th data-toggle="true">Name</th>
@@ -71,6 +75,13 @@
                 </thead>
                 <tbody>
                 </tbody>
+                <tfoot>
+        <tr>
+            <td colspan="7">
+                <div class="pagination pagination-centered hide-if-no-paging"></div>
+            </td>
+        </tr>
+    </tfoot>
             </table>
             
         </div>
@@ -89,7 +100,7 @@
                 if ( record['Obituary URL'] !== '' ) name_field += ' (<a href="' + record['Obituary URL'] + '" target="_parent">obituary</a>)';
 
                 var row = '<tr><td>' + name_field + '</td>\n\
-                <td>' + record['Date of homicide'] + '</td>\n\
+                <td data-value="' + record['unixtime'] + '">' + record['Date of homicide'] + '</td>\n\
                 <td>' + record['Time of homicide'] + '</td>\n\
                 <td>' + record['Neighborhood'] + '</td>\n\
                 <td>' + record['Age'] + '</td>\n\
