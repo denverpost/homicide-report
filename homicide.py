@@ -136,8 +136,8 @@ def main(options, args):
         """
     sheet = Sheet('Homicide Report', 'responses')
     sheet.set_options(options)
-    is_metro = False
     for arg in args:
+        is_metro = False
         if '=' not in arg:
             continue
         k, v = arg.split('=')
