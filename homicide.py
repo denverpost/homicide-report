@@ -1,5 +1,7 @@
 #!/usr/bin/env python
-# Turn the homicide spreadsheet into a flatfile.
+"""homicide.py docstring
+Turn the homicide spreadsheet into a flatfile.
+"""
 import os
 import sys
 import json
@@ -7,6 +9,7 @@ import doctest
 import csv
 import codecs, cStringIO
 import datetime, time
+from docopt import docopt
 import gspread
 from spreadsheet import Sheet
 from collections import defaultdict
@@ -164,9 +167,20 @@ if __name__ == '__main__':
     parser = OptionParser()
     parser.add_option("-g", "--geocode", dest="geocode", default=False, action="store_true")
     parser.add_option("-v", "--verbose", dest="verbose", default=False, action="store_true")
+    #parser.add_option("-h", "--help", dest="help", default=False, action="store_true")
     (options, args) = parser.parse_args()
 
     if options.verbose:
         doctest.testmod(verbose=options.verbose)
+    if options.help:
+        print """
+Downloads, filters and re-publishes the Google sheet of homicides.
+Takes arguments based on the field names in the sheet.
+
+Example command:
+$ python homicide.py City=Denver
+or
+$ python homicide.py City="Portland Metro"
+        """
 
     main(options, args)
