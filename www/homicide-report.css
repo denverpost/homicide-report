@@ -8,18 +8,18 @@ table { width: 100%; }
 .reveal-modal { width: 90vw !important; }
 .reveal-modal>:first-child { margin-top: 20px; }
 iframe.homicide-map { width: 100%; height: 550px; }
-iframe.homicide-list { width: 100%; height: 700px; }
+iframe.homicide-list { width: 100%; height: 750px; }
 iframe.homicide-chart {width: 100%; height: 500px; }
 .ho-list { display: inline; }
 .social-icons { height: 50px; width: 50px; }
 ul.no-bullet { margin-top: 15px; }
 .button { padding: .625rem 1rem .175rem 1rem; background-color: #C0C0C0; border-color: #C0C0C0; }
-.year2010 { background-color: rgba(255,69,0,.8); }
-.year2011 { background-color: rgba(0,0,255,.8); }
-.year2012 { background-color: rgba(128,128,128,.8); }
-.year2013 { background-color: rgba(128,0,0,.8); }
-.year2014 { background-color: rgba(0,0,0,.8); }
-.year2015 { background-color: rgba(0,128,0,.8); }
+.year2010 { background-color: rgba(179,88,6,1); }
+.year2011 { background-color: rgba(224,130,20,1); }
+.year2012 { background-color: rgba(253,184,99,1); }
+.year2013 { background-color: rgba(178,171,210,1); }
+.year2014 { background-color: rgba(128,115,172,1); }
+.year2015 { background-color: rgba(84,39,136,1); }
 .legend { height:22px; width:16%; float:left; color: white; text-align: center; padding: 6px 0px 0px 0px; font-family: Helvetica, sans-serif; font-weight: bold; }
 .legend-container { margin: 10px 0px 0px 25px; }
 #canvas { width: 850px; height: 400px; }
