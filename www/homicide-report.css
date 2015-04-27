@@ -8,7 +8,7 @@ table { width: 100%; }
 .reveal-modal { width: 90vw !important; }
 .reveal-modal>:first-child { margin-top: 20px; }
 iframe.homicide-map { width: 100%; height: 550px; }
-iframe.homicide-list { width: 100%; height: 750px; }
+iframe.homicide-list { width: 100%; height: 1100px; }
 iframe.homicide-chart {width: 100%; height: 500px; }
 .ho-list { display: inline; }
 .social-icons { height: 50px; width: 50px; }
