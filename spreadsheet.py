@@ -6,6 +6,7 @@ import json
 import doctest
 import csv
 import gspread
+import string
 from oauth2client.client import SignedJwtAssertionCredentials
 from collections import defaultdict
 try:
@@ -32,7 +33,7 @@ class Sheet:
         scope = ['https://spreadsheets.google.com/feeds']
         self.credentials = SignedJwtAssertionCredentials(
             os.environ.get('ACCOUNT_USER'),
-            os.environ.get('ACCOUNT_KEY'),
+            string.replace(os.environ.get('ACCOUNT_KEY'), "\\n", "\n"),
             scope)
         self.spread = gspread.authorize(self.credentials)
         self.sheet_name = sheet_name
