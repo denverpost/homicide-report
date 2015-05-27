@@ -34,7 +34,7 @@ class Sheet:
             os.environ.get('ACCOUNT_USER'),
             os.environ.get('ACCOUNT_KEY'),
             scope)
-        self.spread = gspread.authorize(credentials)
+        self.spread = gspread.authorize(self.credentials)
         self.sheet_name = sheet_name
         self.filters = None
         if worksheet:
