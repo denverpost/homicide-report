@@ -6,6 +6,7 @@ import json
 import doctest
 import csv
 import gspread
+from oauth2client.client import SignedJwtAssertionCredentials
 from collections import defaultdict
 try:
     from collections import OrderedDict
@@ -28,9 +29,12 @@ class Sheet:
         if not os.path.isdir('%s/output' % self.directory):
             os.mkdir('%s/output' % self.directory)
 
-        self.spread = gspread.login(
+        scope = ['https://spreadsheets.google.com/feeds']
+        self.credentials = SignedJwtAssertionCredentials(
             os.environ.get('ACCOUNT_USER'),
-            os.environ.get('ACCOUNT_KEY'))
+            os.environ.get('ACCOUNT_KEY'),
+            scope)
+        self.spread = gspread.authorize(credentials)
         self.sheet_name = sheet_name
         self.filters = None
         if worksheet:
