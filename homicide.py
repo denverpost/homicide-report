@@ -172,7 +172,8 @@ if __name__ == '__main__':
 
     if options.verbose:
         doctest.testmod(verbose=options.verbose)
-    if options.help:
+    '''
+    if 'help' in options:
         print """
 Downloads, filters and re-publishes the Google sheet of homicides.
 Takes arguments based on the field names in the sheet.
@@ -182,5 +183,6 @@ $ python homicide.py City=Denver
 or
 $ python homicide.py City="Portland Metro"
         """
+    '''
 
     main(options, args)
