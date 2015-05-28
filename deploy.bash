@@ -20,11 +20,11 @@ for CITY in Denver "El Paso" Louisville Portland "Portland Metro" Nashville; do
     echo $slug
 
     # Write the flat files
-    python homicide.py City="$CITY"
+    python2.7 homicide.py City="$CITY"
 
     # *** UPDATE AT THE START OF EACH YEAR
     for YEAR in 2014 2015; do
-        python homicide.py City="$CITY" Year=$YEAR
+        python2.7 homicide.py City="$CITY" Year=$YEAR
     done
 
     ls -lth output/*$slug*
@@ -39,7 +39,7 @@ done
 # Output the whole year's homicide
 # *** UPDATE AT THE START OF EACH YEAR
 for YEAR in 2014 2015; do
-    python homicide.py Year=$YEAR
+    python2.7 homicide.py Year=$YEAR
 done
 
 # FTP the data files
