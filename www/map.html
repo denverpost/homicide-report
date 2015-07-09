@@ -51,16 +51,16 @@ var latlongs = {
     'louisville': [38.2500, -85.7667]
 }
 var zooms = {
-    'denver': 9,
-    'el-paso': 10,
-    'nashville': 10,
-    'portland': 10,
-    'louisville': 10
+    'denver': 11,
+    'el-paso': 12,
+    'nashville': 12,
+    'portland': 12,
+    'louisville': 12
 }
     
 // MAP
 var m = {
-    map: L.map('map').setView(latlongs[homicides.city], 12),
+    map: L.map('map').setView(latlongs[homicides.city], zooms[homicides.city]),
     markers: {},
     tile: 'http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg',
     attribution: '<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, tiles courtesy of <a href="http://www.mapquest.com/">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png" scale="0">',
@@ -89,8 +89,7 @@ var m = {
     init: function() {
         L.tileLayer(this.tile, {
             attribution: this.attribution,
-            maxZoom: 16,
-            zoom: zooms[homicides.city]
+            maxZoom: 16
         }).addTo(this.map);
     }
 }
