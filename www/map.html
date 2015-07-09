@@ -44,7 +44,7 @@
 
 
 var latlongs = {
-    'denver': [39.7392, -104.9847],
+    'denver': [39.7392, -105.0847],
     'el-paso': [31.7903, -106.4233],
     'nashville': [36.1667, -86.7833],
     'portland': [45.5200, -122.6819],
@@ -58,7 +58,10 @@ var m = {
     tile: 'http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg',
     attribution: '<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, tiles courtesy of <a href="http://www.mapquest.com/">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png" scale="0">',
     add_marker: function(lat, lon) {
-        return L.marker(new L.LatLng(lat, lon), {}).addTo(this.map);
+        if ( typeof lat !== 'undefined' && typeof lon !== 'undefined' )
+        {
+            return L.marker(new L.LatLng(lat, lon), {}).addTo(this.map);
+        }
     },
     build_marker_text: function(record, record_next) {
         var article_link = '';
