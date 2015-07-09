@@ -44,11 +44,18 @@
 
 
 var latlongs = {
-    'denver': [39.7392, -105.0847],
+    'denver': [39.7392, -104.9247],
     'el-paso': [31.7903, -106.4233],
     'nashville': [36.1667, -86.7833],
     'portland': [45.5200, -122.6819],
     'louisville': [38.2500, -85.7667]
+}
+var zooms = {
+    'denver': 9,
+    'el-paso': 10,
+    'nashville': 10,
+    'portland': 10,
+    'louisville': 10
 }
     
 // MAP
@@ -83,7 +90,7 @@ var m = {
         L.tileLayer(this.tile, {
             attribution: this.attribution,
             maxZoom: 16,
-            zoom: 10
+            zoom: zooms[homicides.city]
         }).addTo(this.map);
     }
 }
