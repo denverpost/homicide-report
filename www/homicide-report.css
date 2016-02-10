@@ -14,13 +14,14 @@ iframe.homicide-chart {width: 100%; height: 500px; }
 .social-icons { height: 50px; width: 50px; }
 ul.no-bullet { margin-top: 15px; }
 .button { padding: .625rem 1rem .175rem 1rem; background-color: #C0C0C0; border-color: #C0C0C0; }
-.year2010 { background-color: rgba(179,88,6,1); }
-.year2011 { background-color: rgba(224,130,20,1); }
-.year2012 { background-color: rgba(253,184,99,1); }
-.year2013 { background-color: rgba(178,171,210,1); }
-.year2014 { background-color: rgba(128,115,172,1); }
-.year2015 { background-color: rgba(84,39,136,1); }
-.legend { height:22px; width:16%; float:left; color: white; text-align: center; padding: 6px 0px 0px 0px; font-family: Helvetica, sans-serif; font-weight: bold; }
+.year2010 { background-color: rgba(254,240,217,1); }
+.year2011 { background-color: rgba(253,212,158,1); }
+.year2012 { background-color: rgba(253,187,132,1); }
+.year2013 { background-color: rgba(252,141,89,1); }
+.year2014 { background-color: rgba(239,101,72,1); }
+.year2015 { background-color: rgba(215,48,31,1); }
+.year2016 { background-color: rgba(153,0,0,1); }
+.legend { height:22px; width:14%; float:left; color: white; text-align: center; padding: 6px 0px 0px 0px; font-family: Helvetica, sans-serif; font-weight: bold; }
 .legend-container { margin: 10px 0px 0px 25px; }
 #canvas { width: 850px; height: 400px; }
 .footer-text { text-align: center; }
