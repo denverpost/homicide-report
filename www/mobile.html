@@ -133,12 +133,12 @@
                     if ( keyvalue[0].toLowerCase() === 'year' ) homicides.year = keyvalue[1];
                 }
             }
-            this.update_urls();
-            $( document ).ready( homicides.update_iframes(); );
+            homicides.update_urls();
+            $( document ).ready( function() { homicides.update_iframes(); } );
         },
         url: {
-            map: 'http://extras.denverpost.com/app/homicide-report/map.html?city=' + homicides.city + '&year=' + homicides.year,
-            list: 'http://extras.denverpost.com/app/homicide-report/list.html?city=' + homicides.city + '&year=' + homicides.year
+            map: 'http://extras.denverpost.com/app/homicide-report/map.html?city=' + this.city + '&year=' + this.year,
+            list: 'http://extras.denverpost.com/app/homicide-report/list.html?city=' + this.city + '&year=' + this.year
         },
         update_urls: function()
         {
@@ -180,7 +180,11 @@
     </div>
     <div class="row">
       <div class="small-11 small-centered columns">      
-        <h5>The map, table and chart track homicides in the City and County of Denver in 2015 and 2016. Information is collected from news reports, the coroner at Denver's Office of the Medical Examiner and the Denver Police Department. Initial information may be incomplete and will be updated as it becomes available.</h5>
+        <h5>The map, table and chart track homicides in the City and County of Denver in 
+            <a href="#" onClick="homicides.year=2015; homicides.update_urls(); homicides.update_iframes(); return false;">2015</a>
+            and 
+            <a href="#" onClick="homicides.year=2016; homicides.update_urls(); homicides.update_iframes(); return false;">2016</a>.
+            Information is collected from news reports, the coroner at Denver's Office of the Medical Examiner and the Denver Police Department. Initial information may be incomplete and will be updated as it becomes available.</h5>
       </div>
     </div>
 
