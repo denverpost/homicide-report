@@ -7,11 +7,11 @@
 
 source /usr/local/bin/virtualenvwrapper.sh
 workon HOMICIDE
-CURRENT_YEAR=2015
+CURRENT_YEAR=2016
 #declare -a CITIES=('Denver' '"El Paso"' 'Louisville' 'Portland' '"Portland Metro"' 'Nashville')
 #declare -a METROS=('Portland')
 
-for CITY in Denver "El Paso" Louisville Portland "Portland Metro" Nashville; do
+for CITY in Denver Louisville Portland "Portland Metro" Nashville; do
     # Prep the variables
     echo $CITY
 
@@ -23,7 +23,7 @@ for CITY in Denver "El Paso" Louisville Portland "Portland Metro" Nashville; do
     python2.7 homicide.py City="$CITY"
 
     # *** UPDATE AT THE START OF EACH YEAR
-    for YEAR in 2014 2015; do
+    for YEAR in 2014 2015 2016; do
         python2.7 homicide.py City="$CITY" Year=$YEAR
     done
 
@@ -38,7 +38,7 @@ done
 
 # Output the whole year's homicide
 # *** UPDATE AT THE START OF EACH YEAR
-for YEAR in 2014 2015; do
+for YEAR in 2014 2015 2016; do
     python2.7 homicide.py Year=$YEAR
 done
 
