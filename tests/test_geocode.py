@@ -9,4 +9,4 @@ def test_geocode():
         """
     g = Geocode('Portland, OR')
     latlng = g.get()
-    assert latlng == [45.5230622, -122.6764816]
+    assert latlng == ['45.5230622', '-122.6764816']
