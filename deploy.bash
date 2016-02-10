@@ -7,7 +7,16 @@
 
 source /usr/local/bin/virtualenvwrapper.sh
 workon HOMICIDE
+TEST=0
 CURRENT_YEAR=2016
+while [ "$1" != "" ]; do
+    case $1 in
+        -t | --test ) shift
+            TEST=1
+            ;;
+    esac
+    shift
+done
 #declare -a CITIES=('Denver' '"El Paso"' 'Louisville' 'Portland' '"Portland Metro"' 'Nashville')
 #declare -a METROS=('Portland')
 
@@ -42,7 +51,9 @@ for YEAR in 2014 2015 2016; do
     python2.7 homicide.py Year=$YEAR
 done
 
-# FTP the data files
-./ftp.bash --dir $REMOTE_DIR/output --host $REMOTE_HOST
-# FTP the static files (should only update them when necessary.)
-./ftp.bash --dir $REMOTE_DIR --source_dir www --host $REMOTE_HOST
+# FTP the data files if we're not testing it.
+if [ $TEST == 0 ]; then
+    ./ftp.bash --dir $REMOTE_DIR/output --host $REMOTE_HOST
+    # FTP the static files (should only update them when necessary.)
+    ./ftp.bash --dir $REMOTE_DIR --source_dir www --host $REMOTE_HOST
+fi
