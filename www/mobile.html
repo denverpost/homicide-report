@@ -133,7 +133,7 @@
                     if ( keyvalue[0].toLowerCase() === 'year' ) homicides.year = keyvalue[1];
                 }
             }
-            homicides.update_urls();
+            this.update_urls();
             $( document ).ready( function() { homicides.update_iframes(); } );
         },
         url: {
@@ -142,8 +142,8 @@
         },
         update_urls: function()
         {
-            this.url.map = 'http://extras.denverpost.com/app/homicide-report/map.html?city=' + homicides.city + '&year=' + homicides.year;
-            this.url.list = 'http://extras.denverpost.com/app/homicide-report/list.html?city=' + homicides.city + '&year=' + homicides.year;
+            this.url.map = 'http://extras.denverpost.com/app/homicide-report/map.html?city=' + this.city + '&year=' + this.year;
+            this.url.list = 'http://extras.denverpost.com/app/homicide-report/list.html?city=' + this.city + '&year=' + this.year;
         },
         update_iframes: function()
         {
@@ -151,6 +151,7 @@
             $('#homicide-list').attr('src', this.url.list);
         }
     }
+    homicides.init();
 </script>
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
