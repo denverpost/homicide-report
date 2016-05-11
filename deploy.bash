@@ -57,3 +57,12 @@ if [ $TEST == 0 ]; then
     # FTP the static files (should only update them when necessary.)
     ./ftp.bash --dir $REMOTE_DIR --source_dir www --host $REMOTE_HOST
 fi
+
+# BUST CACHE
+for CITY in Denver Louisville Portland "Portland Metro" Nashville; do
+    slug=`echo $CITY | tr '[:upper:]' '[:lower:]' | tr ' ' '-'`
+    for extension in json jsonp csv; do
+        curl -X PURGE http://extras.denverpost.com/app/homicide-report/output/responses-$slug$CURRENT_YEAR.$extension
+        curl -X PURGE http://extras.denverpost.com/app/homicide-report/output/responses-$slug.$extension
+    done
+done
