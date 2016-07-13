@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Homicide Map - Homicide Report</title>
-    <link rel="canonical" href="http://www.denverpost.com/denverhomicides" />
+    <link rel="canonical" href="http://www.denverpost.com/denver-homicides/" />
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
@@ -63,8 +63,8 @@ var zooms = {
 var m = {
     map: L.map('map').setView(latlongs[homicides.city], zooms[homicides.city]),
     markers: {},
-    tile: 'http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg',
-    attribution: '<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, tiles courtesy of <a href="http://www.mapquest.com/">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png" scale="0">',
+    tile: 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+    attribution: '<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, tiles courtesy of <a href="http://cartodb.com/attributions">CartoDB</a>',
     add_marker: function(lat, lon) {
         if ( typeof lat !== 'undefined' && typeof lon !== 'undefined' )
         {
