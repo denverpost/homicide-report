@@ -54,6 +54,8 @@ class UnicodeWriter:
 class Homicide:
     """ Handle the homicide spreadsheet-specific parts of publishing
         from Google Sheets.
+        >>> sheet = Sheet('test-sheet', 'worksheet-name')
+        >>> homicide = Homicide(sheet)
         """
     def __init__(self, sheet):
         self.sheet = sheet
