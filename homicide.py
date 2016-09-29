@@ -59,12 +59,6 @@ class Homicide:
         self.sheet = sheet
         self.is_metro = False
 
-    def set_is_metro(self, value):
-        """ Setter for self.is_metro.
-            """
-        self.is_metro = value
-        return self.is_metro
-
     def publish(self, worksheet=None):
         """ Publish the homicide data in whatever permutations we need.
             This assumes the spreadsheet's key names are in the first row.
@@ -160,7 +154,7 @@ def main(options, args):
             is_metro = True
         sheet.add_filter(k, v)
     homicides = Homicide(sheet)
-    homicides.set_is_metro(is_metro)
+    homicides.is_metro = is_metro
     homicides.publish()
 
 if __name__ == '__main__':
