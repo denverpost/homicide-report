@@ -61,7 +61,7 @@ var zooms = {
     
 // MAP
 var m = {
-    map: L.map('map').setView(latlongs[homicides.city], zooms[homicides.city]),
+    map: L.map('map', {maxZoom:homicides.city, scrollWheelZoom:false} ).setView(latlongs[homicides.city], zooms[homicides.city]),
     markers: {},
     tile: 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
     attribution: '<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, tiles courtesy of <a href="http://cartodb.com/attributions">CartoDB</a>',
