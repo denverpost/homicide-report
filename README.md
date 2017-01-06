@@ -20,7 +20,16 @@ export REMOTE_HOST=''
 
 ## How to get the Homicide Report ready for a new year
 
-The Homicide Report is tied to reporting homicides for a particular city in a particular year. Come January, these things need to change:
+The Homicide Report is tied to reporting homicides for a particular city in a particular year. Come January, the hard-coded years need to be updated. Every hard-coded year that needs changing is marked nearby (usually on the line above) with a `NEWYEAR` label. That means running `git grep NEWYEAR` will show a list of files that need editing.
+
+Here's how it works.
+
+1. Run `git grep NEWYEAR` on the command line.
+2. Edit the files listed, changing the years in them to the current year. Many files will require more than one edit.
+3. Upload the files to production ( `/DenverPost/app/homicide-report` ).
+4. Commit and push your changes.
+5. Pull the changes from production, run the new deploy script.
+6. Update the iframe URLs that reference the previous year on http://www.denverpost.com/denver-homicides/ 
 
 
 
