@@ -31,6 +31,7 @@ Here's how it works.
 5. Pull the changes from production, run the new deploy script.
 6. Update the iframe URLs that reference the previous year on http://www.denverpost.com/denver-homicides/ 
 
+You can see [this commit](https://github.com/denverpost/homicide-report/commit/7850376ce47250ec0d6345b18fb42b9a280cb1fd) and [this commit](https://github.com/denverpost/homicide-report/commit/565350679aa9ab186ef53022167a2282767471bb) to see which files were changed to get the Homicide Report ready for 2017.
 
 
 # License
