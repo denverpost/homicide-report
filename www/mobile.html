@@ -181,6 +181,7 @@
     </div>
     <div class="row">
       <div class="small-11 small-centered columns">      
+        <!-- NEWYEAR -->
         <h5>The map, table and chart track homicides in the City and County of Denver in 
             <a href="#" onClick="homicides.year=2015; homicides.update_urls(); homicides.update_iframes(); return false;">2015</a>
             and 
@@ -211,6 +212,7 @@ document.write('<iframe src="' + homicides.url.list + '" frameborder="0" allowfu
     <div class="row">
       <div class="small-11 small-centered columns">
         <div class="homicide-chart">
+<!-- NEWYEAR -->
           <h2>Homicides 2010-2016</h2>
           <p>The chart shows cumulative monthly homicides &mdash; excluding vehicular homicides &mdash; from 2010 to 2016. It will be updated as information becomes available.</p>
           <iframe src="historical-chart.html" frameborder="0" allowfullscreen scrolling="no" seamless id="homicide-chart" class="homicide-chart"></iframe>
@@ -297,14 +299,12 @@ document.write('<iframe src="' + homicides.url.list + '" frameborder="0" allowfu
         //Chartbeat stuff
         _sf_async_config.uid = 2671;
         _sf_async_config.domain = 'denverpost.com';
-        _sf_async_config.sections = 'travel,games';
+        _sf_async_config.sections = 'news,data,games,';
         _sf_async_config.useCanonical = true;
         (function(){
             function loadChartbeat() {
                 window._sf_endpt=(new Date()).getTime();
                 var e = document.createElement('script');
-                e.setAttribute('language', 'javascript');
-                e.setAttribute('type', 'text/javascript');
                 e.setAttribute('src','//static.chartbeat.com/js/chartbeat.js');
                 document.body.appendChild(e);
             }
@@ -312,6 +312,7 @@ document.write('<iframe src="' + homicides.url.list + '" frameborder="0" allowfu
             window.onload = (typeof window.onload != 'function') ? loadChartbeat : function() { oldonload(); loadChartbeat(); };
         })();
     </script>
+    <!-- NEWYEAR -->
     <p>Copyright &copy; 2015-2016 <a href="http://www.denverpost.com/">The Denver Post</a></p>
     <p>
         <a href="http://www.denverpost.com/weather#denver">Denver Weather</a> 

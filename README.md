@@ -16,8 +16,16 @@ export REMOTE_DIR=''
 export REMOTE_HOST=''
 ```
 
+# How-To's
+
+## How to get the Homicide Report ready for a new year
+
+The Homicide Report is tied to reporting homicides for a particular city in a particular year. Come January, these things need to change:
+
+
+
 # License
-Copyright © 2015-2016 The Denver Post
+Copyright © 2015-2017 The Denver Post
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy of the

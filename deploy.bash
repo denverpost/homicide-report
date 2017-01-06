@@ -8,6 +8,7 @@
 source /usr/local/bin/virtualenvwrapper.sh
 workon HOMICIDE
 TEST=0
+# NEWYEAR
 CURRENT_YEAR=2016
 while [ "$1" != "" ]; do
     case $1 in
@@ -46,7 +47,7 @@ for METRO in portland; do
 done
 
 # Output the whole year's homicide
-# *** UPDATE AT THE START OF EACH YEAR
+# *** UPDATE AT THE START OF EACH YEAR NEWYEAR
 for YEAR in 2014 2015 2016; do
     python2.7 homicide.py Year=$YEAR
 done

@@ -6,6 +6,7 @@
 source source.bash # If it exists
 source /usr/local/bin/virtualenvwrapper.sh
 workon HOMICIDE
+# NEWYEAR
 CURRENT_YEAR=2016
 
 cp output/responses.csv output/current.csv
