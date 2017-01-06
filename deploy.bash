@@ -9,7 +9,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 workon HOMICIDE
 TEST=0
 # NEWYEAR
-CURRENT_YEAR=2016
+CURRENT_YEAR=2017
 while [ "$1" != "" ]; do
     case $1 in
         -t | --test ) shift
@@ -33,7 +33,7 @@ for CITY in Denver Louisville Portland "Portland Metro" Nashville; do
     python2.7 homicide.py City="$CITY"
 
     # *** UPDATE AT THE START OF EACH YEAR
-    for YEAR in 2014 2015 2016; do
+    for YEAR in 2014 2015 2016 2017; do
         python2.7 homicide.py City="$CITY" Year=$YEAR
     done
 
